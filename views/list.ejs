@@ -1,0 +1,1551 @@
+<%- include("header") -%>
+  <!-- <script type="text/javascript">
+  function refreshPage () {
+      var page_y = document.getElementsByTagName("body")[0].scrollTop;
+      window.location.href = window.location.href.split('?')[0] + '?page_y=' + page_y;
+  }
+  window.onload = function () {
+      setTimeout(refreshPage, 35000);
+      if ( window.location.href.indexOf('page_y') != -1 ) {
+          var match = window.location.href.split('?')[1].split("&")[0].split("=");
+          document.getElementsByTagName("body")[0].scrollTop = match[1];
+      }
+  }
+</script> -->
+
+
+
+  <div class="inline">
+    <form action="/job" method="post">
+
+
+      <div class="box" id="heading">
+
+        <h2>Job Number:
+          <input type="text" class="jobNumber" name="jobNumber" value="<%= jobNumber %>" />
+        </h2>
+        <h2>Address: <input type="text" class="address" name="address" value="<%= address %>" /></h2>
+        <h2>Date: <input type="text" name="date" class="jobNumber" value="<%= date %>" /></h2>
+        <h2>Council: <input type="text" name="council" class="jobNumber" value="<%= PoleDesignExternal.council %>" />
+        </h2>
+
+        <h2>Engineer:
+          <select name="engineerName" class="jobNumber" style="height: 30px;">
+            <option value="">Select Engineer</option>
+            <option value="alice">Alice</option>
+            <option value="harry">Harry</option>
+            <option value="thomas">Thomas</option>
+          </select>
+        </h2>
+
+
+        <div class="upload-btn-wrapper">
+          <button type="button" class="upload-btn" onclick="openUploadModal()">Upload PDF File</button>
+        </div>
+      </div>
+      <input type="hidden" name="pdfUrl" id="pdfUrlInput" />
+
+
+      <div style="border-style: solid; border-color: blue;">
+        <p>Page No.
+          <input type="text" name="pages" value="<%= PoleDesignExternal.pages %>"
+            style="width:110px; background-color: gainsboro;" />
+          dated
+          <input type="text" name="dated" value="<%= PoleDesignExternal.dated %>"
+            style="width:110px; background-color: gainsboro;" />
+        </p>
+        <p>Geotech <input type="text" name="Geotech" value="<%= PoleDesignExternal.Geotech %>"
+            style="width:110px; background-color: gainsboro;" /> </p>
+        <p>
+          <label for="b2"> B2 required:</label>
+          <select name="b2">
+            <option value="Yes" <%=b2[0] %>>Yes</option>
+            <option value="No" <%=b2[1] %> >No</option>
+          </select>
+          Soil
+          <input type="text" name="soil" value="<%= PoleDesignExternal.soil %>"
+            style="width:110px; background-color: gainsboro;" />
+          <label>KPa</label>
+        </p>
+        <p>
+          Cohesion
+          <input type="text" name="soilCohesion" value="<%= PoleDesignInternal.Cohesion %>"
+            style="width:55px; background-color: gainsboro;" />
+          <label>KPa</label>
+          Angle of Fric.
+          <input type="text" name="soilFriction" value="<%= PoleDesignInternal.Friction %>"
+            style="width:55px; background-color: gainsboro;" />
+
+          Density
+          <input type="text" name="soilDensity" value="<%= PoleDesignInternal.Density %>"
+            style="width:55px; background-color: gainsboro;" />
+          <label>KPa</label>
+        </p>
+        <p>
+          <label for="cer"> Certificate required:</label>
+          <select name="cer">
+            <option value="Yes" <%=cer[0] %>>Yes</option>
+            <option value="No" <%=cer[1] %> >No</option>
+          </select>
+        </p>
+      </div>
+
+      <div class="box">
+
+        <div style="border-style: solid; border-color: blue;">
+          <div class="item">
+            <p>Length</p>
+            <input type="number" step="any" name="Length" value="<%= chlength %>" />
+            <p>m (From CH)</p>
+          </div>
+          <div class="item">
+            <p>Width</p>
+            <input type="number" step="any" name="Width" value="<%= chwidth %>" />
+            <p>m (From CH)</p>
+          </div>
+          <div class="item">
+            <p>Wind Speed</p>
+
+            <input type="number" step="any" name="windSpeed" value="<%= WSpeed %>" />
+            <p>m/s (From CH)</p>
+          </div>
+          <div class="item">
+            <p>Site Elevation</p>
+
+            <input type="number" step="any" name="SElev" value="<%= elevation %>" />
+            <p>m (From CH)</p>
+          </div>
+        </div>
+        <div style="border-style: solid; border-color: blue; ">
+          <div class="item" style="width: 300px;">
+            <p>Roof Pressue </p>
+            <p style="padding-right: 0%;">Cpi</p>
+            <input type="number" step="any" name="RCpi2" value="<%= PoleDesignInternal.RCpi2 %>" style="width: 70px;" />
+          </div>
+
+          <div class="item">
+            <p>Max. Downward</p>
+            <input type="number" step="any" name="RMaxD" value="<%= PoleDesignInternal.RMaxD %>" style="width: 45px;" />
+            <p style="padding-right: 0%;">KPa</p>
+
+
+            <p style="padding-left: 0%;">Max. Upward</p>
+            <input type="number" step="any" name="RMaxU" value="<%= PoleDesignInternal.RMaxU %>" style="width: 45px;" />
+            <p style="padding-left: 0%;">KPa</p>
+          </div>
+
+          <div class="item">
+            <p>From </p>
+            <input type="number" step="any" name="RFrom1" value="<%= PoleDesignInternal.RFrom1 %>"
+              style="width: 70px;" />
+            <p>m</p>
+
+
+            <p>To </p>
+            <input type="number" step="any" name="RTo1" value="<%= PoleDesignInternal.RTo1 %>" style="width: 45px;" />
+            <p>m</p>
+          </div>
+          <div class="item" style="width: 300px;">
+            <p style="padding-right: 0%;">Cpe</p>
+            <input type="number" step="any" name="RCPe1" value="<%= PoleDesignInternal.RCPe1 %>" style="width: 45px;" />
+            <p style="padding-right: 0%;">pe</p>
+            <input type="number" step="any" name="Rpe1" value="<%= PoleDesignInternal.Rpe1 %>" style="width: 45px;">
+            <p style="padding-right: 0%;">KPa</p>
+            <p style="padding-right: 0%; padding-left: 0%;">pnet</p>
+            <input type="number" step="any" name="Rpnet1" value="<%= PoleDesignInternal.Rpnet1 %>" style="width: 45px;">
+            <p style="padding-right: 0%;">KPa</p>
+          </div>
+          <div class="item">
+            <p>From </p>
+            <input type="number" step="any" name="RFrom2" value="<%= PoleDesignInternal.RFrom2 %>"
+              style="width: 45px;" />
+            <p>m</p>
+
+            <p>To </p>
+            <input type="number" step="any" name="RTo2" value="<%= PoleDesignInternal.RTo2 %>" style="width: 45px;" />
+            <p>m</p>
+          </div>
+          <div class="item" style="width: 300px;">
+            <p style="padding-right: 0%;">Cpe</p>
+            <input type="number" step="any" name="RCpe2" value="<%= PoleDesignInternal.RCpe2 %>" style="width: 45px;" />
+            <p style="padding-right: 0%;">pe</p>
+            <input type="number" step="any" name="Rpe2" value="<%= PoleDesignInternal.Rpe2 %>" style="width: 45px;">
+            <p style="padding-right: 0%;">KPa</p>
+            <p style="padding-right: 0%;">pnet</p>
+            <input type="number" step="any" name="Rpnet2" value="<%= PoleDesignInternal.Rpnet2 %>" style="width: 45px;">
+            <p style="padding-left: 0%;">KPa</p>
+          </div>
+
+          <P> Wall Pressue</p>
+          <div class="item">
+
+            <p>Maximum Pressure </p>
+            <input type="number" step="any" name="WMax" value="<%= PoleDesignInternal.WMax %>" style="width: 45px;" />
+            <p>KPa</p>
+
+          </div>
+          <p>WindWard and LeeWard </p>
+          <div class="item">
+
+            <p>From </p>
+            <input type="number" step="any" name="WFrom1" value="<%= PoleDesignInternal.WFrom1 %>"
+              style="width: 45px;" />
+            <p>m</p>
+
+
+            <p>To </p>
+            <input type="number" step="any" name="WTo1" value="<%= PoleDesignInternal.WTo1 %>" style="width: 45px;" />
+            <p>m</p>
+          </div>
+          <div class="item" style="width: 300px;">
+            <p style="padding-right: 0%;">Cpe</p>
+            <input type="number" step="any" name="WCPe1" value="<%= PoleDesignInternal.WCPe1 %>" style="width: 45px;" />
+            <p style="padding-right: 0%;">pe</p>
+            <input type="number" step="any" name="Wpe1" value="<%= PoleDesignInternal.Wpe1 %>" style="width: 45px;">
+            <p style="padding-right: 0%; padding-left: 0%;">KPa</p>
+            <p style="padding-right: 0%;">pnet</p>
+            <input type="number" step="any" name="Wpnet1" value="<%= PoleDesignInternal.Wpnet1 %>" style="width: 45px;">
+            <p style="padding-left: 0%;">KPa</p>
+          </div>
+          <p>Side Wall</p>
+          <div class="item">
+
+            <p>From </p>
+            <input type="number" step="any" name="WFrom2" value="<%= PoleDesignInternal.WFrom2 %>"
+              style="width: 45px;" />
+            <p>m</p>
+
+            <p>To </p>
+            <input type="number" step="any" name="WTo2" value="<%= PoleDesignInternal.WTo2 %>" style="width: 45px;" />
+            <p>m</p>
+          </div>
+          <div class="item" style="width: 300px;">
+            <p style="padding-right: 0%;">Cpe</p>
+            <input type="number" step="any" name="WCpe2" value="<%= PoleDesignInternal.WCpe2 %>" style="width: 45px;" />
+            <p style="padding-right: 0%;">pe</p>
+            <input type="number" step="any" name="Wpe2" value="<%= PoleDesignInternal.Wpe2 %>" style="width: 45px;">
+            <p style="padding-right: 0%; padding-left: 0%;">KPa</p>
+            <p style="padding-right: 0%; padding-left: 0%;">pnet</p>
+            <input type="number" step="any" name="Wpnet2" value="<%= PoleDesignInternal.Wpnet2 %>"
+              style="width: 45px; padding-right: 0%;">
+            <p style="padding-left: 0%;">KPa</p>
+          </div>
+          <div class="item">
+            <p>Cpi Windward</p>
+            <input type="number" step="any" name="WCpi1" value="<%= PoleDesignInternal.WCpi1 %>" style="width: 45px;" />
+            <p>Cpi Side Wall</p>
+            <input type="number" step="any" name="WCpi2" value="<%= PoleDesignInternal.WCpi2 %>" style="width: 45px;">
+          </div>
+
+          <div class="item">
+            <p>Maximum Racking</p>
+            <input type="number" step="any" name="RackMax" value="<%= PoleDesignInternal.RackMax %>"
+              style="width: 45px;" />
+            <p>KPa</p>
+          </div>
+
+        </div>
+
+        <div class="item" style="display: flexbox">
+          <p>
+            <label for="calcs"> Widths:</label>
+            <select name="calcs">
+              <option value="Auto" <%=calcs[0] %>>Auto</option>
+              <option value="Manual" <%=calcs[1] %> >Manual</option>
+            </select>
+          </p>
+          <p>
+            <label for="IInfo"> Info:</label>
+            <select name="IInfo">
+              <option value="UnHide" <%=IInfo[0] %>>UnHide</option>
+              <option value="Hide" <%=IInfo[1] %> >Hide</option>
+            </select>
+          </p>
+        </div>
+
+        <div class="item">
+          <p>
+            <label for="Type"> Shed Type:</label>
+            <select name="Type" id="Type">
+              <option value="Enclosed" <%=shedType[0] %>>Enclosed</option>
+              <option value="Open" <%=shedType[1] %> >Open Bays</option>
+              <option value="Free" <%=shedType[2] %> >Free Standing</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="IL"> Important Level:</label>
+
+            <select name="IL" id="IL">
+              <option value="IL1" <%=IL[0] %> >1</option>
+              <option value="IL2" <%=IL[1] %> >2</option>
+
+            </select>
+          </p>
+
+        </div>
+        <div class="item">
+          <p>No of Bays</p>
+          <input type="number" step="any" name="noOfBays" value="<%= noOfBays %>" style="width: 65px;" />
+          <p>num</p>
+        </div>
+        <div class="item">
+          <p>No. of middle bays</p>
+          <input type="number" step="any" name="noOfColInMiddleBay" value="<%= noOfColInMiddleBay %>"
+            style="width: 65px" ; />
+          <p>num</p>
+        </div>
+        <div class="item">
+          <p>No. of end bays</p>
+          <input type="number" step="any" name="NoOfColInEndBay" value="<%= NoOfColInEndBay %>" style="width: 65px;" />
+          <p>num</p>
+        </div>
+        <div class="item">
+          <p>Max. Height</p>
+          <input type="number" step="any" name="MaxHeight" value="<%= MaxHeight %>" style="width: 65px;" />
+          <p>m</p>
+        </div>
+
+        <div class="item">
+          <p>Roof Pitch</p>
+          <input type="number" name="RoofPitch" value="<%= RoofPitch %>" step="0.01" style="width: 65px;" />
+          <p>degrees</p>
+        </div>
+        <div class="item">
+          <p>
+            <label for="Condition"> Condition:</label>
+            <select name="Condition" id="Condition">
+              <option value="DryUseNoSnow" <%=condition[0] %> >Dry Use No Snow</option>
+              <option value="DryUseSnow" <%=condition[1] %>>Dry Use with Snow</option>
+              <option value="WetUseNoSnow" <%=condition[2] %>>Wet Use No Snow</option>
+              <option value="WetUseSnow" <%=condition[3] %>>Wet Use with Snow</option>
+            </select>
+          </p>
+        </div>
+
+
+
+        <div class="item">
+          <p>
+            <label for="snowZone"> Snow Zone:</label>
+            <select name="snowZone" id="snowZone">
+
+              <option value="N0" <%=selected[0] %> >N0</option>
+              <option value="N1" <%=selected[1] %> >N1</option>
+              <option value="N2" <%=selected[2] %> >N2</option>
+              <option value="N3" <%=selected[3] %> >N3</option>
+              <option value="N4" <%=selected[4] %> >N4</option>
+              <option value="N5" <%=selected[5] %> >N5</option>
+
+
+
+            </select>
+          </p>
+          <p>
+            <label for="EqZone"> Earthquake Zone:</label>
+            <select name="EqZone" id="EqZone">
+
+              <option value="1" <%=Eq[0] %> >1</option>
+              <option value="2" <%=Eq[1] %> >2</option>
+              <option value="3" <%=Eq[2] %> >3</option>
+              <option value="4" <%=Eq[3] %> >4</option>
+
+            </select>
+          </p>
+        </div>
+
+        <div class="item">
+          <p>
+            <label for="DZone"> Durability Zone:</label>
+            <select name="DZone" id="DZone">
+
+              <option value="B" <%=Db[0] %> >B</option>
+              <option value="C" <%=Db[1] %> >C</option>
+              <option value="D" <%=Db[2] %> >D</option>
+
+
+            </select>
+          </p>
+          <div class="item">
+            <p>
+              <label for="roofType"> Roof type:</label>
+              <select name="roofType" name="roofType">
+                <option value="Mono" <%=roofType[0] %> >Mono</option>
+                <option value="Gable" <%=roofType[1] %> >Gable</option>
+              </select>
+            </p>
+          </div>
+        </div>
+
+
+        <h3> Purlins
+          <label>
+
+            <select name="PDisplay" onchange="this.form.submit()">
+              <option value="UnHide" <%=PDisplay[0] %>>UnHide</option>
+              <option value="Hide" <%=PDisplay[1] %> >Hide</option>
+            </select>
+          </label>
+        </h3>
+        <div class="item">
+
+          <p>
+            <label for="purlinSize"> Select Purlin Size:</label>
+            <select name="purlinSize" id="purlinSize">
+
+              <option value="SG815050Dry" <%=PSize[0] %> >150x50 SG8 dry</option>
+              <option value="SG820050Dry" <%=PSize[1] %> >200x50 SG8 dry</option>
+              <option value="SG825050Dry" <%=PSize[2] %> >250x50 SG8 dry</option>
+              <option value="SG830050Dry" <%=PSize[3] %> >300x50 SG8 dry</option>
+              <option value="SG610050wet" <%=PSize[4] %> >100x50 SG6 wet</option>
+              <option value="SG615050wet" <%=PSize[5] %> >150x50 SG6 wet</option>
+              <option value="SG620050wet" <%=PSize[6] %> >200x50 SG6 wet</option>
+              <option value="SG610050Dry" <%=PSize[7] %> >100x50 SG6 dry</option>
+              <option value="SG615050Dry" <%=PSize[8] %> >150x50 SG6 dry</option>
+              <option value="SG620050Dry" <%=PSize[9] %> >200x50 SG6 dry</option>
+              <option value="9045LVL8" <%=PSize[10] %> >90x45 LVL8</option>
+              <option value="14045LVL8" <%=PSize[11] %> >140x45 LVL8</option>
+              <option value="19045LVL8" <%=PSize[12] %> >190x45 LVL8</option>
+              <option value="24045LVL8" <%=PSize[13] %> >240x45 LVL8</option>
+              <option value="29045LVL8" <%=PSize[14] %> >290x45 LVL8</option>
+              <option value="SG814045Dry" <%=PSize[15] %> >140x45 SG8 Dry</option>
+              <option value="SG819045Dry" <%=PSize[16] %> >190x45 SG8 Dry</option>
+              <option value="SG824045Dry" <%=PSize[17] %> >240x45 SG8 Dry</option>
+              <option value="SG614045Dry" <%=PSize[18] %> >140x45 SG6 Dry</option>
+              <option value="SG619045Dry" <%=PSize[19] %> >190x45 SG6 Dry</option>
+              <option value="SG624045Dry" <%=PSize[20] %> >240x45 SG6 Dry</option>
+              <option value="SG614045wet" <%=PSize[21] %> >140x45 SG6 wet</option>
+              <option value="SG619045wet" <%=PSize[22] %> >190x45 SG6 wet</option>
+              <option value="SG624045wet" <%=PSize[23] %> >240x45 SG6 wet</option>
+              <option value="SG629045wet" <%=PSize[24] %> >290x45 SG6 wet</option>
+              <option value="SG824045wet" <%=PSize[25] %> >240x45 SG8 wet</option>
+              <option value="SG829045wet" <%=PSize[26] %> >290x45 SG8 wet</option>
+              <option value="24045LVL13" <%=PSize[27] %> >240x45 LVL13</option>
+              <option value="30045LVL13" <%=PSize[28] %> >300x45 LVL13</option>
+              <option value="36045LVL13" <%=PSize[29] %> >360x45 LVL13</option>
+              <option value="40045LVL13" <%=PSize[30] %> >400x45 LVL13</option>
+              <option value="45045LVL13" <%=PSize[31] %> >450x45 LVL13</option>
+              <option value="SG815050wet" <%=PSize[32] %> >150x50 SG8 wet</option>
+              <option value="SG820050wet" <%=PSize[33] %> >200x50 SG8 wet</option>
+              <option value="SG825050wet" <%=PSize[34] %> >250x50 SG8 wet</option>
+              <option value="SG830050wet" <%=PSize[35] %> >300x50 SG8 wet</option>
+              <option value="SG829045Dry" <%=PSize[36] %> >290x45 SG8 Dry</option>
+            </select>
+
+        </div>
+
+        <div class="item">
+          <p>Purlin Spacing</p>
+          <input type="number" step="1" name="pSpacing" value="<%= PSpacing %>" style="width: 100px;" />
+          </p>
+          <p>mm</p>
+        </div>
+
+        <div class="item" style="display: <%= PoleDesignInternal.Manualdisplay %>">
+          <p>Bay Width</p>
+          <input type="number" step="1" name="pSpanManual" value="<%= PoleDesignInternal.pSpanManual %>"
+            style="width: 100px;" />
+          </p>
+          <p>mm</p>
+        </div>
+
+        <div class="item">
+          <p>Bottom Restraint</p>
+          <input type="number" step="1" name="Blocking" value="<%= Blocking %>" style="width: 100px;" />
+          </p>
+        </div>
+        <h3 style="margin-bottom: 0%;"> Rafters Internal Bays (Double)
+          <label>
+
+            <select name="RDisplay">
+              <option value="UnHide" <%=RDisplay[0] %>>UnHide</option>
+              <option value="Hide" <%=RDisplay[1] %> >Hide</option>
+            </select>
+            <label>Props</label>
+            <select name="PropQ">
+              <option value="0" <%=PropQ[0] %> >0</option>
+              <option value="1" <%=PropQ[1] %> >1</option>
+              <option value="2" <%=PropQ[2] %> >2</option>
+
+
+            </select>
+        </h3>
+        <div class="item">
+
+          <p style="padding-top: 0%;padding-bottom: 0%">
+            <label for="rafterSize">Rafter Size:</label>
+            <select name="rafterSize" id="rafterSize">
+
+              <option value="SG815050Dry" <%=RSize[0] %> >2/150x50 SG8 dry</option>
+              <option value="SG820050Dry" <%=RSize[1] %> >2/200x50 SG8 dry</option>
+              <option value="SG825050Dry" <%=RSize[2] %> >2/250x50 SG8 dry</option>
+              <option value="SG830050Dry" <%=RSize[3] %> >2/300x50 SG8 dry</option>
+              <option value="20045LVL13" <%=RSize[4] %> >2/200x45 LVL13</option>
+              <option value="24045LVL13" <%=RSize[5] %> >2/240x45 LVL13</option>
+              <option value="30045LVL13" <%=RSize[6] %> >2/300x45 LVL13</option>
+              <option value="36045LVL13" <%=RSize[7] %> >2/360x45 LVL13</option>
+              <option value="40045LVL13" <%=RSize[8] %> >2/400x45 LVL13</option>
+              <option value="45045LVL13" <%=RSize[9] %> >2/450x45 LVL13</option>
+              <option value="20063LVL13" <%=RSize[10] %> >2/200x63 LVL13</option>
+              <option value="24063LVL13" <%=RSize[11] %> >2/240x63 LVL13</option>
+              <option value="30063LVL13" <%=RSize[12] %> >2/300x63 LVL13</option>
+              <option value="36063LVL13" <%=RSize[13] %> >2/360x63 LVL13</option>
+              <option value="30090LVL11" <%=RSize[14] %> >2/300x90 LVL11</option>
+              <option value="SG829045Dry" <%=RSize[15] %> >2/290x45 SG8 Dry</option>
+              <option value="40063LVL13" <%=RSize[16] %> >2/400x63 LVL13</option>
+              <option value="40090LVL11" <%=RSize[17] %> >2/400x90 LVL11</option>
+              <option value="61090LVL11" <%=RSize[18] %> >1/610x90 LVL11</option>
+              <option value="24045LVL11" <%=RSize[19] %> >2/240x45 LVL11</option>
+              <option value="24045LVL8" <%=RSize[20] %> >2/240x45 LVL8</option>
+              <option value="29045LVL8" <%=RSize[21] %> >2/290x45 LVL8</option>
+              <option value="61031.5LVL13" <%=RSize[22] %> >1/610x63 LVL13</option>
+              <option value="30045LVL11" <%=RSize[23] %> >2/300x45 LVL11</option>
+              <option value="36045LVL11" <%=RSize[24] %> >2/360x45 LVL11</option>
+              <option value="40045LVL11" <%=RSize[25] %> >2/400x45 LVL11</option>
+              <option value="30063LVL11" <%=RSize[26] %> >2/300x63 LVL11</option>
+              <option value="36063LVL11" <%=RSize[27] %> >2/360x63 LVL11</option>
+              <option value="40063LVL11" <%=RSize[28] %> >2/400x63 LVL11</option>
+              <option value="SG624045wet" <%=RSize[29] %> >2/240x45 SG6 wet</option>
+              <option value="SG629045wet" <%=RSize[30] %> >2/290x45 SG6 wet</option>
+              <option value="SG824045wet" <%=RSize[31] %> >2/240x45 SG8 wet</option>
+              <option value="SG829045wet" <%=RSize[32] %> >2/290x45 SG8 wet</option>
+              <option value="40022.5LVL13" <%=RSize[33] %> >1/400x45 LVL13</option>
+              <option value="45063LVL13" <%=RSize[34] %> >2/450x63 LVL13 </option>
+              <option value="61045LVL11" <%=RSize[35] %> >2/610x45 LVL11</option>
+              <option value="SG815050wet" <%=RSize[36] %> >150x50 SG8 wet</option>
+              <option value="SG820050wet" <%=RSize[37] %> >200x50 SG8 wet</option>
+              <option value="SG825050wet" <%=RSize[38] %> >250x50 SG8 wet</option>
+              <option value="SG830050wet" <%=RSize[39] %> >300x50 SG8 wet</option>
+              <option value="SG814045Dry" <%=RSize[40] %> >140x45 SG8 dry</option>
+              <option value="SG819045Dry" <%=RSize[41] %> >190x45 SG8 dry</option>
+              <option value="SG824045Dry" <%=RSize[42] %> >240x45 SG8 dry</option>
+
+            </select>
+
+        </div>
+
+        <div>
+          <label> Bolts M</label>
+          <select name="RBoltInternal">
+            <option value="12" <%=BI[0] %> >12</option>
+            <option value="16" <%=BI[1] %> >16</option>
+            <option value="20" <%=BI[2] %> >20</option>
+          </select>
+          <label> Quantity</label>
+          <input type="number" step="any" name="Noda" value="<%= RafterCapacity.Noda %>" style="width: 50px;" />
+
+        </div>
+        <div style="display: <%= PoleDesignInternal.MipCalc %>">
+
+          <div>
+            <p>
+              <label for="PropInternal"> Prop, Length mm:</label>
+              <select name="PropInternal">
+
+                <option value="SG815050Dry" <%=PrSize[0] %> >2/150x50 SG8 dry</option>
+                <option value="SG820050Dry" <%=PrSize[1] %> >2/200x50 SG8 dry</option>
+                <option value="SG825050Dry" <%=PrSize[2] %> >2/250x50 SG8 dry</option>
+                <option value="SG830050Dry" <%=PrSize[3] %> >2/300x50 SG8 dry</option>
+                <option value="20045LVL13" <%=PrSize[4] %> >2/200x45 LVL13</option>
+                <option value="24045LVL13" <%=PrSize[5] %> >2/240x45 LVL13</option>
+                <option value="30045LVL13" <%=PrSize[6] %> >2/300x45 LVL13</option>
+                <option value="36045LVL13" <%=PrSize[7] %> >2/360x45 LVL13</option>
+                <option value="40045LVL13" <%=PrSize[8] %> >2/400x45 LVL13</option>
+                <option value="45045LVL13" <%=PrSize[9] %> >2/450x45 LVL13</option>
+                <option value="20063LVL13" <%=PrSize[10] %> >2/200x63 LVL13</option>
+                <option value="24063LVL13" <%=PrSize[11] %> >2/240x63 LVL13</option>
+                <option value="30063LVL13" <%=PrSize[12] %> >2/300x63 LVL13</option>
+                <option value="36063LVL13" <%=PrSize[13] %> >2/360x63 LVL13</option>
+                <option value="30090LVL11" <%=PrSize[14] %> >2/300x90 LVL11</option>
+                <option value="SG829045Dry" <%=PrSize[15] %> >2/290x45 SG8 Dry</option>
+                <option value="40063LVL13" <%=PrSize[16] %> >2/400x63 LVL13</option>
+                <option value="40090LVL11" <%=PrSize[17] %> >2/400x90 LVL11</option>
+                <option value="61090LVL11" <%=PrSize[18] %> >2/610x90 LVL11</option>
+                <option value="24045LVL11" <%=PrSize[19] %> >2/240x45 LVL11</option>
+                <option value="24045LVL8" <%=PrSize[20] %> >2/240x45 LVL8</option>
+                <option value="29045LVL8" <%=PrSize[21] %> >2/290x45 LVL8</option>
+                <option value="30045LVL11" <%=PrSize[22] %> >2/300x45 LVL11</option>
+                <option value="SG815050wet" <%=PrSize[23] %> >150x50 SG8 wet</option>
+                <option value="SG820050wet" <%=PrSize[24] %> >200x50 SG8 wet</option>
+                <option value="SG825050wet" <%=PrSize[25] %> >250x50 SG8 wet</option>
+                <option value="SG830050wet" <%=PrSize[26] %> >300x50 SG8 wet</option>
+
+
+
+
+
+              </select>
+              <input type="number" step="any" name="PropL" value="<%= PoleDesignInternal.PropL %>"
+                style="width: 50px;" />
+
+
+            </p>
+
+          </div>
+          <div>
+            <label> Bolts M</label>
+            <select name="RBoltProp">
+              <option value="12" <%=BProp[0] %> >12</option>
+              <option value="16" <%=BProp[1] %> >16</option>
+              <option value="20" <%=BProp[2] %> >20</option>
+            </select>
+            <label> Quantity</label>
+            <input type="number" step="any" name="NodaProp" value="<%= RafterCapacity.NodaProp %>"
+              style="width: 50px;" />
+
+          </div>
+
+
+          <label> <strong> Moments. All Values in Kn and Kn-m </strong></label>
+          <div class="item">
+            <label> M-Long </label>
+            <input type="number" step="any" name="MMomentLong" value="<%= PAnalysis.MMomentLong %>"
+              style="width: 40px;" />
+            <label> M-Medium </label>
+            <input type="number" step="any" name="MMomentMedium" value="<%= PAnalysis.MMomentMedium %>"
+              style="width: 40px;" />
+            <label> M-Short</label>
+            <input type="number" step="any" name="MMomentShort" value="<%= PAnalysis.MMomentShort %>"
+              style="width: 40px;" />
+          </div>
+          <div class="item">
+            <label> R1-Long </label>
+            <input type="number" step="any" name="MReactionLong" value="<%= PAnalysis.MReactionLong %>"
+              style="width: 40px;" />
+            <label> R1-Medium </label>
+            <input type="number" step="any" name="MReactionMedium" value="<%= PAnalysis.MReactionMedium %>"
+              style="width: 40px;" />
+            <label> R1-Short</label>
+            <input type="number" step="any" name="MReactionShort" value="<%= PAnalysis.MReactionShort %>"
+              style="width: 40px;" />
+          </div>
+
+          <div class="item">
+            <label> R2-Long </label>
+            <input type="number" step="any" name="MReaction2Long" value="<%= PAnalysis.MReaction2Long %>"
+              style="width: 40px;" />
+            <label> R2-Medium </label>
+            <input type="number" step="any" name="MReaction2Medium" value="<%= PAnalysis.MReaction2Medium %>"
+              style="width: 40px;" />
+            <label> R-Prop Short</label>
+            <input type="number" step="any" name="MReaction2Short" value="<%= PAnalysis.MReaction2Short %>"
+              style="width: 40px;" />
+          </div>
+          <div class="item">
+            <label> R-Prop Long </label>
+            <input type="number" step="any" name="MReactionPropLong" value="<%= PAnalysis.MReactionPropLong %>"
+              style="width: 40px;" />
+            <label> R-Prop Medium </label>
+            <input type="number" step="any" name="MReactionPropMedium" value="<%= PAnalysis.MReactionPropMedium %>"
+              style="width: 40px;" />
+            <label> R2-Short</label>
+            <input type="number" step="any" name="MReactionPropShort" value="<%= PAnalysis.MReactionPropShort %>"
+              style="width: 40px;" />
+          </div>
+
+          <div class="item">
+            <label>Def Short in mm </label>
+            <input type="number" step="any" name="MDefShort" value="<%= RafterCapacity.MDefShort %>"
+              style="width: 40px;" />
+
+            <label> Def Long in mm </label>
+            <input type="number" step="any" name="MDefLong" value="<%= RafterCapacity.MDefLong %>"
+              style="width: 40px;" />
+
+          </div>
+        </div>
+
+        <div class="item" style="display: <%= PoleDesignInternal.Manualdisplay %>">
+          <p>Lateral Load Width</p>
+          <input type="number" step="any" name="PLWManual" value="<%= PoleDesignInternal.PLWManual %>"
+            style="width: 100px;" />
+          </p>
+          <p>mm</p>
+        </div>
+
+        <div class="item" style="display: <%= PoleDesignInternal.Manualdisplay %>">
+          <p>Internal Rafter Span</p>
+          <input type="number" step="any" name="RISManual" value="<%= PoleDesignInternal.RISManual %>"
+            style="width: 100px;" />
+          </p>
+          <p>mm</p>
+        </div>
+
+        <h3 style="margin-bottom: 0%;"> Rafters External Bays (Single)
+          <label>
+
+            <select name="ReDisplay">
+              <option value="UnHide" <%=ReDisplay[0] %>>UnHide</option>
+              <option value="Hide" <%=ReDisplay[1] %> >Hide</option>
+            </select>
+          </label>
+        </h3>
+        <div class="item">
+
+
+          <label for="rafterSizeE"> Select Rafter Size:</label>
+          <select name="rafterSizeE" id="rafterSizeE">
+
+            <option value="SG815050Dry" <%=RESize[0] %> >150x50 SG8 dry</option>
+            <option value="SG820050Dry" <%=RESize[1] %> >200x50 SG8 dry</option>
+            <option value="SG825050Dry" <%=RESize[2] %> >250x50 SG8 dry</option>
+            <option value="SG830050Dry" <%=RESize[3] %> >300x50 SG8 dry</option>
+            <option value="20045LVL13" <%=RESize[4] %> >200x45 LVL13</option>
+            <option value="24045LVL13" <%=RESize[5] %> >240x45 LVL13</option>
+            <option value="30045LVL13" <%=RESize[6] %> >300x45 LVL13</option>
+            <option value="36045LVL13" <%=RESize[7] %> >360x45 LVL13</option>
+            <option value="40045LVL13" <%=RESize[8] %> >400x45 LVL13</option>
+            <option value="45045LVL13" <%=RESize[9] %> >450x45 LVL13</option>
+            <option value="20063LVL13" <%=RESize[10] %> >200x63 LVL13</option>
+            <option value="24063LVL13" <%=RESize[11] %> >240x63 LVL13</option>
+            <option value="30063LVL13" <%=RESize[12] %> >300x63 LVL13</option>
+            <option value="36063LVL13" <%=RESize[13] %> >360x63 LVL13</option>
+            <option value="24045LVL8" <%=RESize[14] %> >240x45 LVL8 </option>
+            <option value="SG829045Dry" <%=RESize[15] %> > 290x45 SG8</option>
+            <option value="40063LVL13" <%=RESize[16] %> >400x63 LVL13 </option>
+            <option value="30090LVL11" <%=RESize[17] %> >300x90 LVL11</option>
+            <option value="40090LVL11" <%=RESize[18] %> >400x90 LVL11</option>
+            <option value="61090LVL11" <%=RESize[19] %> >610x90 LVL11</option>
+            <option value="24045LVL11" <%=RESize[20] %> >240x45 LVL11</option>
+            <option value="24045LVL8" <%=RESize[21] %> >240x45 LVL8</option>
+            <option value="29045LVL8" <%=RESize[22] %> >290x45 LVL8</option>
+            <option value="30045LVL11" <%=RESize[23] %> >300x45 LVL11</option>
+            <option value="36045LVL11" <%=RESize[24] %> >360x45 LVL11</option>
+            <option value="40045LVL11" <%=RESize[25] %> >400x45 LVL11</option>
+            <option value="30063LVL11" <%=RESize[26] %> >300x63 LVL11</option>
+            <option value="36063LVL11" <%=RESize[27] %> >360x63 LVL11</option>
+            <option value="40063LVL11" <%=RESize[28] %> >400x63 LVL11</option>
+            <option value="SG624045wet" <%=RESize[29] %> >240x45 SG6 wet</option>
+            <option value="SG629045wet" <%=RESize[30] %> >290x45 SG6 wet</option>
+            <option value="SG824045wet" <%=RESize[31] %> >240x45 SG8 wet</option>
+            <option value="SG829045wet" <%=RESize[32] %> >290x45 SG8 wet</option>
+            <option value="40022.5LVL13" <%=RESize[33] %> >400x45 LVL13</option>
+            <option value="45063LVL13" <%=RESize[34] %> >450x63 LVL13 </option>
+            <option value="SG815050wet" <%=RESize[35] %> >150x50 SG8 wet</option>
+            <option value="SG820050wet" <%=RESize[36] %> >200x50 SG8 wet</option>
+            <option value="SG825050wet" <%=RESize[37] %> >250x50 SG8 wet</option>
+            <option value="SG830050wet" <%=RESize[38] %> >300x50 SG8 wet</option>
+            <option value="SG814045Dry" <%=RESize[39] %> >140x45 SG8 dry</option>
+            <option value="SG819045Dry" <%=RESize[40] %> >190x45 SG8 dry</option>
+            <option value="SG824045Dry" <%=RESize[41] %> >240x45 SG8 dry</option>
+          </select>
+
+        </div>
+        <div>
+          <label> Bolts M</label>
+          <select name="RBoltExternal">
+            <option value="12" <%=BE[0] %> >12</option>
+            <option value="16" <%=BE[1] %> >16</option>
+            <option value="20" <%=BE[2] %> >20</option>
+          </select>
+          <label> Quantity</label>
+          <input type="number" step="any" name="NodaEx" value="<%= RafterCapacityE.Noda %>" style="width: 50px;" />
+
+        </div>
+        <div class="item">
+          <p>Max. Girt Span</p>
+          <input type="number" step="any" name="MaxGirtSpan" value="<%= MaxGirtSpan %>" style="width: 50px;" />
+          <p>mm</p>
+        </div>
+        <div style="display: <%= IntermediateFrontBack.display %>">
+
+          <h3> Intermediate Front/Back (Double)
+            <label>
+              <select name="InDisplay">
+                <option value="UnHide" <%=InDisplay[0] %>>UnHide</option>
+                <option value="Hide" <%=InDisplay[1] %> >Hide</option>
+              </select>
+            </label>
+            <label>
+              <select name="IFBAuto">
+                <option value="IFBAuto" <%=IFBAuto[0] %>>Auto</option>
+                <option value="IFBManual" <%=IFBAuto[1] %> >Manual</option>
+              </select>
+            </label>
+          </h3>
+
+          <div class="item;">
+            <label for="FrontorBack">Front or Back</label>
+            <select name="FrontorBack" id="FrontorBack">
+              <option value="Front" <%=Fb[0] %>>Front</option>
+              <option value="Back" <%=Fb[1] %>>Back</option>
+            </select>
+            <label for="IntermediateFB"> Select Intermediate:</label>
+            <select name="IntermediateFB" id="IntermediateFB">
+
+              <option value="SG810050Dry" <%=IFb[0] %> >2/100x50 SG8 dry</option>
+              <option value="SG815050Dry" <%=IFb[1] %> >2/150x50 SG8 dry</option>
+              <option value="SG820050Dry" <%=IFb[2] %> >2/200x50 SG8 dry</option>
+              <option value="SG825050Dry" <%=IFb[3] %> >2/250x50 SG8 dry</option>
+              <option value="SG830050Dry" <%=IFb[4] %> >2/300x50 SG8 dry</option>
+              <option value="SG610050wet" <%=IFb[5] %> >2/100x50 SG6 wet</option>
+              <option value="SG615050wet" <%=IFb[6] %> >2/150x50 SG6 wet</option>
+              <option value="SG620050wet" <%=IFb[7] %> >2/200x50 SG6 wet</option>
+              <option value="SG624050wet" <%=IFb[8] %> >2/240x50 SG6 wet</option>
+              <option value="SG815050wet" <%=IFb[9] %> >2/150x50 SG8 wet</option>
+              <option value="SG820050wet" <%=IFb[10] %> >2/200x50 SG8 wet</option>
+              <option value="SG825050wet" <%=IFb[11] %> >2/250x50 SG8 wet</option>
+              <option value="SG830050wet" <%=IFb[12] %> >2/300x50 SG8 wet</option>
+              <option value="SG814045Dry" <%=IFb[13] %> >2/140x45 SG8 dry</option>
+              <option value="SG819045Dry" <%=IFb[14] %> >2/190x45 SG8 dry</option>
+              <option value="SG824045Dry" <%=IFb[15] %> >2/240x45 SG8 dry</option>
+              <option value="SG829045Dry" <%=IFb[16] %> >2/290x45 SG8 dry</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <div class="item" style="display: <%= IntermediateFrontBack.IFBDisplay %>">
+          <label>Length &nbsp; </label>
+          <input type="number" step="any" name="IFBSpan" value="<%= IntermediateFrontBack.IFBSpan %>"
+            style="width: 50px;" />
+          <label>&nbsp; mm</label>
+          <label>&nbsp; Width &nbsp; </label>
+          <input type="number" step="any" name="IFBWidth" value="<%= IntermediateFrontBack.IFBWidth %>"
+            style="width: 50px;" />
+          <label>&nbsp; mm</label>
+
+
+        </div>
+
+        <div> <!-- style="display: <%= GirtsFrontBack.display %>  -->
+          <h3> Girts Front and Back</h3>
+
+          <div class="item;">
+            <label for="GirtsFB"> Select Girts and Spacing in mm:</label>
+            <select name="GirtsFB" id="GirtsFB">
+
+              <option value="SG810050Dry" <%=GFb[0] %> >100x50 SG8 dry</option>
+              <option value="SG815050Dry" <%=GFb[1] %> >150x50 SG8 dry</option>
+              <option value="SG820050Dry" <%=GFb[2] %> >200x50 SG8 dry</option>
+              <option value="SG825050Dry" <%=GFb[3] %> >250x50 SG8 dry</option>
+              <option value="SG830050Dry" <%=GFb[4] %> >300x50 SG8 dry</option>
+              <option value="SG610050wet" <%=GFb[5] %> >100x50 SG6 wet</option>
+              <option value="SG615050wet" <%=GFb[6] %> >150x50 SG6 wet</option>
+              <option value="SG620050wet" <%=GFb[7] %> >200x50 SG6 wet</option>
+              <option value="SG624050wet" <%=GFb[8] %> >240x50 SG6 wet</option>
+              <option value="SG814045Dry" <%=GFb[9] %> >140x45 SG8 Dry</option>
+              <option value="SG819045Dry" <%=GFb[10] %> >190x45 SG8 Dry</option>
+              <option value="SG614045wet" <%=GFb[11] %> >140x45 SG6 wet</option>
+              <option value="SG614045Dry" <%=GFb[12] %> >140x45 SG6 Dry</option>
+              <option value="SG619045wet" <%=GFb[13] %> >190x45 SG6 wet</option>
+              <option value="SG624045wet" <%=GFb[14] %> >240x45 SG6 wet</option>
+              <option value="SG629045wet" <%=GFb[15] %> >290x45 SG6 wet</option>
+              <option value="SG819045wet" <%=GFb[16] %> >190x45 SG8 wet</option>
+              <option value="SG824045wet" <%=GFb[17] %> >240x45 SG8 wet</option>
+              <option value="SG829045wet" <%=GFb[18] %> >290x45 SG8 wet</option>
+              <option value="20045LVL13" <%=GFb[19] %> >200x45 LVL13</option>
+              <option value="24045LVL13" <%=GFb[20] %> >240x45 LVL13</option>
+              <option value="30045LVL13" <%=GFb[21] %> >300x45 LVL13</option>
+              <option value="20045LVL8" <%=GFb[22] %> >200x45 LVL8</option>
+              <option value="24045LVL8" <%=GFb[23] %> >240x45 LVL8</option>
+              <option value="29045LVL8" <%=GFb[24] %> >290x45 LVL8</option>
+              <option value="SG815050wet" <%=GFb[25] %> >150x50 SG8 wet</option>
+              <option value="SG820050wet" <%=GFb[26] %> >200x50 SG8 wet</option>
+              <option value="SG825050wet" <%=GFb[27] %> >250x50 SG8 wet</option>
+              <option value="SG830050wet" <%=GFb[28] %> >300x50 SG8 wet</option>
+              <option value="SG824045Dry" <%=GFb[29] %> >240x45 SG8 dry </option>
+              <option value="SG829045Dry" <%=GFb[30] %> >290x45 SG8 dry </option>
+
+            </select>
+
+            <input type="number" step="any" name="gSpacing" value="<%= GirtsFrontBack.spacing %>"
+              style="width: 50px;" />
+
+          </div>
+
+          <div>
+            <label> Blocking </label>
+            <input type="number" step="1" name="gFBBlocking" value="<%= GirtsFrontBack.gFBBlocking %>"
+              style="width: 50px;" />
+
+          </div>
+
+        </div>
+
+        <div style="display: <%= IntermediateSIDES.display %>">
+          <h3>Intermediate Sides (Double)
+            <label>
+              <select name="InSideDisplay">
+                <option value="UnHide" <%=InSideDisplay[0] %>>UnHide</option>
+                <option value="Hide" <%=InSideDisplay[1] %> >Hide</option>
+              </select>
+            </label>
+            <label>
+              <select name="ISIAuto">
+                <option value="ISIAuto" <%=ISIAuto[0] %>>Auto</option>
+                <option value="ISIManual" <%=ISIAuto[1] %> >Manual</option>
+              </select>
+            </label>
+          </h3>
+          <div class="item;">
+            <label for="Sides">Sides</label>
+
+            </select>
+            <label for="IntermediateSides"> Intermediate Size:</label>
+            <select name="IntermediateSides" id="IntermediateFB">
+
+              <option value="SG810050Dry" <%=ISi[0] %> >2/100x50 SG8 dry</option>
+              <option value="SG815050Dry" <%=ISi[1] %> >2/150x50 SG8 dry</option>
+              <option value="SG820050Dry" <%=ISi[2] %> >2/200x50 SG8 dry</option>
+              <option value="SG825050Dry" <%=ISi[3] %> >2/250x50 SG8 dry</option>
+              <option value="SG830050Dry" <%=ISi[4] %> >2/300x50 SG8 dry</option>
+              <option value="SG610050wet" <%=ISi[5] %> >2/100x50 SG6 wet</option>
+              <option value="SG615050wet" <%=ISi[6] %> >2/150x50 SG6 wet</option>
+              <option value="SG620050wet" <%=ISi[7] %> >2/200x50 SG6 wet</option>
+              <option value="SG624050wet" <%=ISi[8] %> >2/240x50 SG6 wet</option>
+              <option value="SG814045Dry" <%=ISi[9] %> >2/140x45 SG8 Dry</option>
+              <option value="SG819045Dry" <%=ISi[10] %> >2/190x45 SG8 Dry</option>
+              <option value="SG824045Dry" <%=ISi[11] %> >2/240x45 SG8 Dry</option>
+              <option value="SG619045wet" <%=ISi[12] %> >2/190x45 SG6 wet</option>
+              <option value="SG614045wet" <%=ISi[13] %> >2/140x45 SG6 wet</option>
+              <option value="SG614045Dry" <%=ISi[14] %> >2/140x45 SG6 Dry</option>
+              <option value="SG815050wet" <%=ISi[15] %> >2/150x50 SG8 wet</option>
+              <option value="SG820050wet" <%=ISi[16] %> >2/200x50 SG8 wet</option>
+              <option value="SG825050wet" <%=ISi[17] %> >2/250x50 SG8 wet</option>
+              <option value="SG830050wet" <%=ISi[18] %> >2/300x50 SG8 wet</option>
+              <option value="SG829045Dry" <%=ISi[19] %> >2/290x45 SG8 dry</option>
+
+            </select>
+
+          </div>
+        </div>
+        <div class="item" style="display: <%= IntermediateSIDES.ISIDisplay %>">
+          <label>Length &nbsp; </label>
+          <input type="number" step="any" name="ISISpan" value="<%= IntermediateSIDES.ISISpan %>"
+            style="width: 50px;" />
+          <label>&nbsp; mm</label>
+          <label>&nbsp; Width &nbsp; </label>
+          <input type="number" step="any" name="ISIWidth" value="<%= IntermediateSIDES.ISIWidth %>"
+            style="width: 50px;" />
+          <label>&nbsp; mm</label>
+
+
+        </div>
+
+        <div> <!--style="display: <%= GirtsSides.display %>"-->
+          <h3> Girts Sides</h3>
+
+          <div class="item;">
+            <label for="GirtsSi"> Select Girts and Spacing in mm:</label>
+            <select name="GirtsSi" id="GirtsSi">
+
+              <option value="SG810050Dry" <%=GSi[0] %> >100x50 SG8 dry</option>
+              <option value="SG815050Dry" <%=GSi[1] %> >150x50 SG8 dry</option>
+              <option value="SG820050Dry" <%=GSi[2] %> >200x50 SG8 dry</option>
+              <option value="SG825050Dry" <%=GSi[3] %> >250x50 SG8 dry</option>
+              <option value="SG830050Dry" <%=GSi[4] %> >300x50 SG8 dry</option>
+              <option value="SG610050wet" <%=GSi[5] %> >100x50 SG6 wet</option>
+              <option value="SG615050wet" <%=GSi[6] %> >150x50 SG6 wet</option>
+              <option value="SG620050wet" <%=GSi[7] %> >200x50 SG6 wet</option>
+              <option value="SG624050wet" <%=GSi[8] %> >240x50 SG6 wet</option>
+              <option value="SG814045Dry" <%=GSi[9] %> >140x45 SG8 Dry</option>
+              <option value="SG819045Dry" <%=GSi[10] %> >190x45 SG8 Dry</option>
+              <option value="SG614045wet" <%=GSi[11] %> >140x45 SG6 wet</option>
+              <option value="SG614045Dry" <%=GSi[12] %> >140x45 SG6 Dry</option>
+              <option value="SG619045wet" <%=GSi[13] %> >190x45 SG6 wet</option>
+              <option value="SG624045wet" <%=GSi[14] %> >240x45 SG6 wet</option>
+              <option value="SG629045wet" <%=GSi[15] %> >290x45 SG6 wet</option>
+              <option value="SG819045wet" <%=GSi[16] %> >190x45 SG8 wet</option>
+              <option value="SG824045wet" <%=GSi[17] %> >240x45 SG8 wet</option>
+              <option value="SG829045wet" <%=GSi[18] %> >290x45 SG8 wet</option>
+              <option value="20045LVL13" <%=GSi[19] %> >200x45 LVL13</option>
+              <option value="24045LVL13" <%=GSi[20] %> >240x45 LVL13</option>
+              <option value="30045LVL13" <%=GSi[21] %> >300x45 LVL13</option>
+              <option value="20045LVL8" <%=GSi[22] %> >200x45 LVL8</option>
+              <option value="24045LVL8" <%=GSi[23] %> >240x45 LVL8</option>
+              <option value="29045LVL8" <%=GSi[24] %> >290x45 LVL8</option>
+              <option value="SG815050wet" <%=GSi[25] %> >150x50 SG8 wet</option>
+              <option value="SG820050wet" <%=GSi[26] %> >200x50 SG8 wet</option>
+              <option value="SG825050wet" <%=GSi[27] %> >250x50 SG8 wet</option>
+              <option value="SG830050wet" <%=GSi[28] %> >300x50 SG8 wet</option>
+              <option value="SG824045Dry" <%=GSi[29] %> >240x45 SG8 dry</option>
+              <option value="SG829045Dry" <%=GSi[30] %> >290x45 SG8 dry</option>
+
+            </select>
+
+            <input type="number" step="any" name="gsSpacing" value="<%= GirtsSides.spacing %>" style="width: 50px;" />
+
+          </div>
+
+          <div>
+            <label> Blocking </label>
+            <input type="number" step="1" name="gSIBlocking" value="<%= GirtsSides.gSIBlocking %>"
+              style="width: 50px;" />
+
+          </div>
+
+        </div>
+
+        <div style="display: ">
+          <h3> Poles Middle Bays
+
+            <label>
+              <select name="PiDisplay">
+                <option value="UnHide" <%=PiDisplay[0] %>>UnHide</option>
+                <option value="Hide" <%=PiDisplay[1] %> >Hide</option>
+              </select>
+            </label>
+          </h3>
+
+          <div class="item;">
+            <label for="MPole"> Select Pole Size and depth mm:</label>
+            <select name="MPole" id="MPole">
+
+              <option value="150SED" <%=MPi[0] %> >150 SED H5</option>
+              <option value="175SED" <%=MPi[1] %> >175 SED H5</option>
+              <option value="200SED" <%=MPi[2] %> >200 SED H5</option>
+              <option value="225SED" <%=MPi[3] %> >225 SED H5</option>
+              <option value="250SED" <%=MPi[4] %> >250 SED H5</option>
+              <option value="275SED" <%=MPi[5] %> >275 SED H5</option>
+              <option value="300SED" <%=MPi[6] %> >300 SED H5</option>
+              <option value="275UNI" <%=MPi[7] %> >275 UNI H5</option>
+              <option value="300UNI" <%=MPi[8] %> >300 UNI H5</option>
+              <option value="100SED" <%=MPi[9] %> >100 SED H5</option>
+              <option value="125SED" <%=MPi[10] %> >125 SED H5</option>
+              <option value="150UNI" <%=MPi[11] %> >150 UNI H5</option>
+              <option value="175UNI" <%=MPi[12] %> >175 UNI H5</option>
+              <option value="200UNI" <%=MPi[13] %> >200 UNI H5</option>
+              <option value="225UNI" <%=MPi[14] %> >225 UNI H5</option>
+              <option value="250UNI" <%=MPi[15] %> >250 UNI H5</option>
+              <option value="350SED" <%=MPi[16] %> >350 SED H5</option>
+              <option value="150SEDHD" <%=MPi[17] %> >150 SED H5 HD</option>
+              <option value="175SEDHD" <%=MPi[18] %> >175 SED H5 HD</option>
+              <option value="200SEDHD" <%=MPi[19] %> >200 SED H5 HD</option>
+              <option value="225SEDHD" <%=MPi[20] %> >225 SED H5 HD</option>
+              <option value="250SEDHD" <%=MPi[21] %> >250 SED H5 HD</option>
+              <option value="275SEDHD" <%=MPi[22] %> >275 SED H5 HD</option>
+              <option value="300SEDHD" <%=MPi[23] %> >300 SED H5 HD</option>
+              <option value="350SEDHD" <%=MPi[24] %> >350 SED H5 HD</option>
+              <option value="100x100SG8" <%=MPi[25] %> >100x100 SG8 H5</option>
+              <option value="125x125SG8" <%=MPi[26] %> >125x125 SG8 H5</option>
+              <option value="150x150SG8" <%=MPi[27] %> >150x150 SG8 H5</option>
+              <option value="175x175SG8" <%=MPi[28] %> >175x175 SG8 H5</option>
+              <option value="200x200SG8" <%=MPi[29] %> >200x200 SG8 H5</option>
+              <option value="225x225SG8" <%=MPi[30] %> >225x225 SG8 H5</option>
+              <option value="250x250SG8" <%=MPi[31] %> >250x250 SG8 H5</option>
+
+            </select>
+            <input type="number" step="1" name="MPoleDepth" value="<%=  PDepthI %>" style="width: 50px;" />
+          </div>
+          <div class="item">
+            <p>Height of Pole</p>
+            <input type="number" step="1" name="MPoleHeight" value="<%= PoleDesignInternal.Height %>"
+              style="width: 100px;" />
+            </p>
+            <p>mm</p>
+
+          </div>
+
+        </div>
+
+        <div class="item">
+
+          <p>Restraint</p>
+          <input type="number" step="1" name="MPoleRes" value="<%= PoleDesignInternal.MPoleRes %>"
+            style="width: 100px;" />
+          </p>
+          <p>mm</p>
+        </div>
+        <div style="display: <%= PoleDesignInternal.MipCalc %>">
+          <label> <strong> All Values in Kn or Kn-m </strong></label>
+          <div class="item">
+            <label> Dead Load </label>
+            <input type="number" step="any" name="MDeadLoad" value="<%= PoleDesignInternal.MDeadLoad %>"
+              style="width: 40px;" />
+            <label> Live Load</label>
+            <input type="number" step="any" name="MLiveLoad" value="<%= PoleDesignInternal.MLiveLoad %>"
+              style="width: 40px;" />
+            <label> Wind Down</label>
+            <input type="number" step="any" name="MWindDown" value="<%= PoleDesignInternal.MWindDown %>"
+              style="width: 40px;" />
+
+          </div>
+          <div>
+            <label> Snow Load</label>
+            <input type="number" step="any" name="MSnowLoad" value="<%= PoleDesignInternal.MSnowLoad %>"
+              style="width: 40px;" />
+            <label> Wind Moment</label>
+            <input type="number" step="any" name="MWindLateral" value="<%= PoleDesignInternal.MWindLateral %>"
+              style="width: 40px;" />
+            <label>Snow Moment</label>
+            <input type="number" step="any" name="MSnowLateral" value="<%= PoleDesignInternal.MSnowLateral %>"
+              style="width: 40px;" />
+          </div>
+          <div>
+            <label> Wind Moment Footing</label>
+            <input type="number" step="any" name="MWindLateralPole" value="<%= PoleDesignInternal.MWindLateralPole %>"
+              style="width: 40px;" />
+            <label>Snow Moment Footing</label>
+            <input type="number" step="any" name="MSnowLateralPole" value="<%= PoleDesignInternal.MSnowLateralPole %>"
+              style="width: 40px;" />
+          </div>
+        </div>
+        <div style="display: ">
+          <h3> Poles End Bays
+            <label>
+              <select name="PeDisplay">
+                <option value="UnHide" <%=PeDisplay[0] %>>UnHide</option>
+                <option value="Hide" <%=PeDisplay[1] %> >Hide</option>
+              </select>
+            </label>
+          </h3>
+
+          <div class="item;">
+            <label for="EPole"> Select Pole Size and depth mm:</label>
+            <select name="EPole" id="EPole">
+
+              <option value="150SED" <%=EPi[0] %> >150 SED H5</option>
+              <option value="175SED" <%=EPi[1] %> >175 SED H5</option>
+              <option value="200SED" <%=EPi[2] %> >200 SED H5</option>
+              <option value="225SED" <%=EPi[3] %> >225 SED H5</option>
+              <option value="250SED" <%=EPi[4] %> >250 SED H5</option>
+              <option value="275SED" <%=EPi[5] %> >275 SED H5</option>
+              <option value="300SED" <%=EPi[6] %> >300 SED H5</option>
+              <option value="275UNI" <%=EPi[7] %> >275 UNI H5</option>
+              <option value="300UNI" <%=EPi[8] %> >300 UNI H5</option>
+              <option value="100SED" <%=EPi[9] %> >100 SED H5</option>
+              <option value="125SED" <%=EPi[10] %> >125 SED H5</option>
+              <option value="150UNI" <%=EPi[11] %> >150 UNI H5</option>
+              <option value="175UNI" <%=EPi[12] %> >175 UNI H5</option>
+              <option value="200UNI" <%=EPi[13] %> >200 UNI H5</option>
+              <option value="225UNI" <%=EPi[14] %> >225 UNI H5</option>
+              <option value="250UNI" <%=EPi[15] %> >250 UNI H5</option>
+              <option value="350SED" <%=EPi[16] %> >350 SED H5</option>
+              <option value="150SEDHD" <%=EPi[17] %> >150 SED H5 HD</option>
+              <option value="175SEDHD" <%=EPi[18] %> >175 SED H5 HD</option>
+              <option value="200SEDHD" <%=EPi[19] %> >200 SED H5 HD</option>
+              <option value="225SEDHD" <%=EPi[20] %> >225 SED H5 HD</option>
+              <option value="250SEDHD" <%=EPi[21] %> >250 SED H5 HD</option>
+              <option value="275SEDHD" <%=EPi[22] %> >275 SED H5 HD</option>
+              <option value="300SEDHD" <%=EPi[23] %> >300 SED H5 HD</option>
+              <option value="350SEDHD" <%=EPi[24] %> >350 SED H5 HD</option>
+              <option value="100x100SG8" <%=EPi[25] %> >100x100 SG8 H5</option>
+              <option value="125x125SG8" <%=EPi[26] %> >125x125 SG8 H5</option>
+              <option value="150x150SG8" <%=EPi[27] %> >150x150 SG8 H5</option>
+              <option value="175x175SG8" <%=EPi[28] %> >175x175 SG8 H5</option>
+              <option value="200x200SG8" <%=EPi[29] %> >200x200 SG8 H5</option>
+              <option value="225x225SG8" <%=EPi[30] %> >225x225 SG8 H5</option>
+              <option value="250x250SG8" <%=EPi[31] %> >250x250 SG8 H5</option>
+            </select>
+            <input type="number" step="any" name="EPoleDepth" value="<%=  PDepthE %>" style="width: 50px;" />
+          </div>
+
+        </div>
+        <div class="item">
+          <button type="submit" name="list" onclick="window.onload()">Calculate</button>
+          <p>
+            <a name="jobList" class="btn btn-primary" href="joblist" role="button">Job List</a>
+          </p>
+          <!-- 
+          <% if (typeof job !== 'undefined') { %>
+  <p style="color:red;">Job ID = <%= job._id %></p>
+<% } else { %>
+  <p style="color:red;">job is NOT defined</p>
+<% } %> -->
+
+          <% if (typeof job !=='undefined' ) { %>
+            <a href="/download/<%= job._id %>" class="btn btn-primary">Create PDF</a>
+            <% } %>
+
+        </div>
+
+      </div>
+    </form>
+
+
+    <!-- uploading file -->
+    <div id="uploadModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close" onclick="closeUploadModal()">&times;</span>
+        <h3>Upload PDF File</h3>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <input type="file" name="fileupload" accept=".pdf" required />
+          <br /><br />
+          <button type="submit" class="upload-btn">Submit</button>
+        </form>
+        <p id="uploadStatus" style="color: green;"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="inline">
+    <div class="boxR">
+
+      <div class="itemR">
+
+        <p>Latitude</p>
+        <p>
+          <%= latitude %>
+        </p>
+      </div>
+
+      <div class="itemR">
+        <p>Longitude</p>
+        <p>
+          <%= longitude %>
+        </p>
+      </div>
+      <div class="itemR">
+        <p>Wind Region</p>
+        <p>
+          <%= wRegion %>
+        </p>
+      </div>
+      <div class="itemR">
+        <p>Lee Zone</p>
+        <p>
+          <%= leeZone %>
+        </p>
+      </div>
+      <div class="itemR">
+        <p>Wind Speed</p>
+        <p>
+          <%= WSpeed %>
+        </p>
+        <p>m/s</p>
+      </div>
+
+      <div class="itemR">
+        <p>Wind Pressure</p>
+        <p name="windPressure">
+          <%= windPressure1 %>
+        </p>
+        <p>Kpa</p>
+      </div>
+
+
+
+      <div class="itemR">
+        <p>Wind Category</p>
+        <p>
+          <%= windCategory %>
+        </p>
+      </div>
+
+      <div class="itemR">
+        <p>Roof Snow Load</p>
+        <p>
+          <%= RSnowLoad %>
+        </p>
+        <p>Kpa</p>
+      </div>
+
+      <div class="itemR">
+        <p>Ground Snow Load</p>
+        <p>
+          <%= GSnowLoad %>
+        </p>
+        <p>Kpa</p>
+      </div>
+
+
+      <div class="itemR">
+        <p>Bay Width</p>
+        <p>
+          <%= bayWidth %>
+        </p>
+        <p>mm</p>
+      </div>
+      <div class="itemR" style="display: <%=  RafterCapacity.display %>">
+        <p>Racking Middle Columns</p>
+        <p>
+          <%= rackingM %>
+        </p>
+        <p>Kn</p>
+      </div>
+
+      <div class="itemR">
+        <p>Racking End Columns</p>
+        <p>
+          <%= rackingE %>
+        </p>
+        <p>Kn</p>
+      </div>
+      <div class="itemR">
+        <p>Racking Force Height</p>
+        <p>
+          <%= RackForceHeight %>
+        </p>
+        <p>m</p>
+      </div>
+      <div style="display: <%= PoleDesignInternal.PoleInternalDisplay %>;">
+        <div class="itemR">
+          <p>Area of Middle Pole</p>
+          <p>
+            <%= PoleDesignInternal.TotalArea %>
+          </p>
+          <p>m2</p>
+        </div>
+        <div class="itemR">
+          <p>Middle High Pole ratio</p>
+          <p>
+            <%= PoleDesignInternal.Ccheck %>
+          </p>
+          <p>
+            < 1 OK</p>
+        </div>
+        <div class="itemR">
+          <p>Deflection Wind </p>
+          <p>
+            <%= PoleDesignInternal.Def %> mm
+          </p>
+          <p>
+            < <%=PoleDesignInternal.Deflimit %> OK
+          </p>
+        </div>
+        <div class="itemR">
+          <p>Middle Footing ratio</p>
+          <p>
+            <%= PoleDesignInternal.Fcheck %>
+          </p>
+          <p>
+            < 1 OK</p>
+        </div>
+      </div>
+      <div style="display: <%= PoleDesignInternal.PoleExternalDisplay %>;">
+        <div class="itemR">
+          <p>Area of End Pole</p>
+          <p>
+            <%= PoleDesignExternal.TotalArea %>
+          </p>
+          <p>m2</p>
+        </div>
+        <div class="itemR">
+          <p>End High Pole ratio</p>
+          <p>
+            <%= PoleDesignExternal.Ccheck %>
+          </p>
+          <p>
+            < 1 OK</p>
+        </div>
+        <div class="itemR">
+          <p>Deflection Wind </p>
+          <p>
+            <%= PoleDesignExternal.Def %> mm
+          </p>
+          <p>
+            < <%=PoleDesignInternal.Deflimit %> OK
+          </p>
+        </div>
+        <div class="itemR">
+          <p>End Footing ratio</p>
+          <p>
+            <%= PoleDesignExternal.Fcheck %>
+          </p>
+          <p>
+            < 1 OK</p>
+        </div>
+      </div>
+      <div class="itemR">
+        <p>Uplift Check</p>
+        <p>
+          <%= PoleDesignInternal.UpLiftOnColumn %> Kn
+        </p>
+        <p>
+          < <%=PoleDesignInternal.pileWeight %> Kn OK
+        </p>
+      </div>
+
+    </div>
+    <div class="boxR" style="display:<%= PoleDesignInternal.RExternalDisplay %>;">
+      <h3> Rafter External Bays </h3>
+      <h4>Moments</h4>
+      <p> Moment Under Long term Loads : <%= PAnalysis.PMLongRE %> Control Value <strong>
+            <%= RafterCapacityE.MomentDownlong %>
+          </strong> Kn-m </p>
+      <p> Moment Under Medium term Loads : <%= PAnalysis.PMMediumRE%> Control Value <strong>
+            <%= RafterCapacityE.MomentDownmedium %>
+          </strong> Kn-m </p>
+      <p> Moment Under Short term Loads : <%= PAnalysis.PMshortuRE %> Control Value <strong> -<%=
+              RafterCapacityE.Momentupshort %> </strong> Kn-m</p>
+      <h4>Shear</h4>
+      <p>Shear Under Short term Loads:<%= PAnalysis.vshortRE %> Control Value <strong>
+            <%= RafterCapacityE.shearShort %>
+          </strong>Kn </p>
+      <p>Shear Under Medium term Loads:<%= PAnalysis.vmediumRE %> Control Value <strong>
+            <%= RafterCapacityE.shearMedium %>
+          </strong> kn</p>
+      <p>Shear Under Long term Loads:<%= PAnalysis.vlongRE %> Control Value <strong>
+            <%= RafterCapacityE.shearLong %>
+          </strong> Kn </p>
+      <p> Max, Min Re in Kn: <%= PAnalysis.reactionRE %> &nbsp &nbsp <%= PAnalysis.reactionupRE %>
+            < <%=RafterCapacityE.Qnshort %>
+      </p>
+      <h4>Deflection</h4>
+      <p> Def Short Term:<%= RafterCapacityE.defshort %> mm </p>
+      <p> Def Long Term:<%= RafterCapacityE.deflong %> mm &nbsp &nbsp Limit:<%= RafterCapacityE.Deflimit %> mm </p>
+    </div>
+    <div class="boxRR" style="display: <%=  PoleDesignInternal.RInternalDisplay %>">
+      <h3> Rafter Internal Bays Double </h3>
+      <h4>Moments</h4>
+      <p> Moment Under Long term Loads : <%= PAnalysis.PMLongRI %> Control Value <strong>
+            <%= RafterCapacity.MomentDownlong %>
+          </strong> Kn-m </p>
+      <p> Moment Under Medium term Loads : <%= PAnalysis.PMMediumRI%> Control Value <strong>
+            <%= RafterCapacity.MomentDownmedium %>
+          </strong> Kn-m </p>
+      <p> Moment Under Short term Loads : <%= PAnalysis.PMshortuRI %> Control Value <strong> -<%=
+              RafterCapacity.Momentupshort %> </strong> Kn-m</p>
+      <h4>Shear</h4>
+      <p>Shear Under Short term Loads:<%= PAnalysis.vshortRI %> Control Value <strong>
+            <%= RafterCapacity.shearShort %>
+          </strong>Kn </p>
+      <p>Shear Under Medium term Loads:<%= PAnalysis.vmediumRI %> Control Value <strong>
+            <%= RafterCapacity.shearMedium %>
+          </strong> kn</p>
+      <p>Shear Under Long term Loads:<%= PAnalysis.vlongRI %> Control Value <strong>
+            <%= RafterCapacity.shearLong %>
+          </strong> Kn </p>
+      <p>Re End 1 in Kn: <%= PAnalysis.reactionRI %> down <%= PAnalysis.reactionupRI %> up < <%=RafterCapacity.Qnshort
+              %>
+      </p>
+      <p>Re End 2 in Kn: <%= PAnalysis.reactionRI2 %> down <%= PAnalysis.reactionupRI2 %> up < <%=RafterCapacity.Qnshort
+              %>
+      </p>
+      <div style="display: <%= PoleDesignInternal.MipCalc %>">
+        <p>Re Prop in Kn : <%= PAnalysis.reactionProp %> down <%= PAnalysis.reactionPropUp %> up <
+                <%=RafterCapacity.QnPropShort %>
+        </p>
+        <p>Prop Short <%= RafterCapacity.PropRatioShort %> Medium <%= RafterCapacity.PropRatioMedium %> Long <%=
+                RafterCapacity.PropRatioLong %>
+        </p>
+      </div>
+      <h4>Deflection</h4>
+      <p> Def Short Term:<%= RafterCapacity.defshort %> mm </p>
+      <p> Def Long Term:<%= RafterCapacity.deflong %> mm &nbsp &nbsp Limit:<%= RafterCapacity.Deflimit %> mm </p>
+    </div>
+  </div>
+  <div class="inline">
+    <div class="boxRR" style="display: <%= PoleDesignInternal.PurlinDisplay %>;">
+      <h3> Purlin </h3>
+      <h4>Moments</h4>
+      <p> Moment Under Long term Loads : <%= MomentLong %> Control Value <strong>
+            <%= MomentDownlong %>
+          </strong> Kn-m </p>
+      <p> Moment Under Medium term Loads : <%= MomentMedium %> Control Value <strong>
+            <%= MomentDownmedium %>
+          </strong> Kn-m </p>
+      <p> Moment Under Short term Loads : <%= MomentShort %> Control Value <strong> -<%= Momentupshort %> </strong> Kn-m
+      </p>
+      <h4>Shear</h4>
+      <p>Shear Under Short term Loads:<%= PAnalysis.vshort %> Control Value <strong>
+            <%= PProperties.shearShort %>
+          </strong>Kn </p>
+      <p>Shear Under Medium term Loads:<%= PAnalysis.vmedium %> Control Value <strong>
+            <%= PProperties.shearMedium %>
+          </strong> kn</p>
+      <p>Shear Under Long term Loads:<%= PAnalysis.vlong %> Control Value <strong>
+            <%= PProperties.shearLong %>
+          </strong> Kn </p>
+      <p> Max, Min Reaction: <%= PAnalysis.reaction %> Kn &nbsp &nbsp <%= PAnalysis.reactionup %> kn </p>
+      <h4>Deflection</h4>
+      <p> Def Short Term:<%= PProperties.defshort %> mm </p>
+      <p> Def Long Term:<%= PProperties.deflong %> mm &nbsp &nbsp Limit:<%= PProperties.Deflimit %> mm </p>
+    </div>
+    <div style="display: <%= IntermediateFrontBack.display %>">
+      <div style="display: <%= PoleDesignInternal.IntermediateFBDisplay %> ;">
+        <div class="boxRRR">
+          <h3> Intermediates Front and Back (Double)</h3>
+          <h4>Moments</h4>
+          <p> Moment Under Short term Loads : <%= IntermediateFrontBack.MApplied %> Control Value <strong>
+                <%= IntermediateFrontBack.Mnushort %>
+              </strong> Kn-m</p>
+          <h4>Shear</h4>
+          <p>Shear Under Short term Loads:<%= IntermediateFrontBack.reaction %> Control Value <strong>
+                <%= IntermediateFrontBack.shearShort %>
+              </strong>Kn </p>
+          <p> Max Reaction: <%= IntermediateFrontBack.reaction %> Kn
+              <h4>Deflection</h4>
+              <p> Deflection:<%= IntermediateFrontBack.defshort %> mm &nbsp &nbsp Limit:<%=
+                    IntermediateFrontBack.Deflimitwn %> mm </p>
+        </div>
+      </div>
+    </div>
+    <div style="display: <%= IntermediateSIDES.display %>">
+      <div style="display: <%= PoleDesignInternal.IntermediateSideDisplay %>;">
+        <div class="inline">
+          <div class="boxRRR">
+            <h3> Intermediates Sides (Double)</h3>
+            <h4>Moments</h4>
+            <p> Moment Under Short term Loads : <%= IntermediateSIDES.MApplied %> Control Value <strong>
+                  <%= IntermediateSIDES.Mnushort %>
+                </strong> Kn-m</p>
+            <h4>Shear</h4>
+            <p>Shear Under Short term Loads:<%= IntermediateSIDES.reaction %> Control Value <strong>
+                  <%= IntermediateSIDES.shearShort %>
+                </strong>Kn </p>
+            <p> Max Reaction: <%= IntermediateSIDES.reaction %> Kn
+                <h4>Deflection</h4>
+                <p> Deflection:<%= IntermediateSIDES.defshort %> mm &nbsp &nbsp Limit:<%= IntermediateSIDES.Deflimitwn
+                      %> mm </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display: <%= GirtsFrontBack.display %>">
+      <div class="inline">
+        <div class="boxRRR">
+          <h3> Girts Front and Back</h3>
+          <h4>Moments</h4>
+          <p> Moment Under Short term Loads : <%= GirtsFrontBack.MApplied %> Control Value <strong>
+                <%= GirtsFrontBack.Mnushort %>
+              </strong> Kn-m</p>
+          <h4>Shear</h4>
+          <p>Shear Under Short term Loads:<%= GirtsFrontBack.reaction %> Control Value <strong>
+                <%= GirtsFrontBack.shearShort %>
+              </strong>Kn </p>
+          <p> Max Reaction: <%= GirtsFrontBack.reaction %> Kn
+              <h4>Deflection</h4>
+              <p> Deflection:<%= GirtsFrontBack.defshort %> mm &nbsp &nbsp Limit:<%= GirtsFrontBack.Deflimitwn %> mm
+              </p>
+              <p>Sag Check <%= GirtsFrontBack.sag %> mm</p>
+        </div>
+      </div>
+    </div>
+    <div style="display: <%= GirtsSides.display %>">
+      <div class="inline">
+        <div class="boxRRR">
+          <h3> Girts Sides</h3>
+          <h4>Moments</h4>
+          <p> Moment Under Short term Loads : <%= GirtsSides.MApplied %> Control Value <strong>
+                <%= GirtsSides.Mnushort %>
+              </strong> Kn-m</p>
+          <h4>Shear</h4>
+          <p>Shear Under Short term Loads:<%= GirtsSides.reaction %> Control Value <strong>
+                <%= GirtsSides.shearShort %>
+              </strong>Kn </p>
+          <p> Max Reaction: <%= GirtsSides.reaction %> Kn
+              <h4>Deflection</h4>
+              <p> Deflection:<%= GirtsSides.defshort %> mm &nbsp &nbsp Limit:<%= GirtsSides.Deflimitwn %> mm </p>
+              <p>Sag Check <%= GirtsSides.sag %> mm</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+  <div>
+    <img src="/pics/EqZoneNorth.png" alt="Earthquake Zone North" width="900" height="900"> </img>
+    <img src="/pics/EqZoneSouth.png" alt="Earthquake Zone North" width="900" height="900"> </img>
+  </div>
+  <div>
+    <img src="/pics/Durability North.png" alt="Earthquake Zone North" width="900" height="900"> </img>
+    <img src="/pics/Durability South.png" alt="Earthquake Zone North" width="900" height="900"> </img>
+  </div>
+  <div>
+    <img src="/pics/SnowZones.png" alt="Earthquake Zone North" width="900" height="900"> </img>
+    <img src="/pics/Concrete Grade.png" alt="Concrete Grade" width="900" height="900"> </img>
+  </div>
+  <div>
+    <img src="/pics/Councils map1.png" alt="Earthquake Zone North" width="900" height="900"> </img>
+  </div>
+
+  <script src="/uploadFile/uploadModal.js"></script>
+  <script src="/uploadFile/setPdfUrl.js"></script>
+  <%- include("footer") -%>

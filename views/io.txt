@@ -1,0 +1,71 @@
+
+jobNumber: req.body.jobNumber,
+address: req.body.address,
+date: today,
+latitude: latitude,
+longitude: longitude,
+elevation: elevation,
+wRegion: wRegion,
+tc: tc,
+lee: lee,
+leeZone: leeZone,
+WSpeed: req.body.windSpeed,
+ari: ari,
+shedType: shedType(req.body.Type),
+length: req.body.Length,
+width: req.body.Width,
+chlength: req.body.Length,
+chwidth: req.body.Width,
+noOfBays: req.body.noOfBays,
+noOfColInMiddleBay: req.body.noOfColInMiddleBay,
+NoOfColInEndBay: req.body.NoOfColInEndBay,
+MaxHeight: req.body.MaxHeight,
+roofType: roofType(req.body.roofType),
+RoofPitch: req.body.RoofPitch,
+condition: condition(req.body.Condition),
+windSpeed: req.body.windSpeed,
+snowZone: req.body.snowZone,
+SElev: req.body.SElev,
+RSnowLoad: snowLoads(
+  req.body.SElev,
+  req.body.snowZone,
+  req.body.RoofPitch
+)[1],
+GSnowLoad: snowLoads(
+  req.body.SElev,
+  req.body.snowZone,
+  req.body.RoofPitch
+)[0],
+windPressure1: windPressure(req.body.windSpeed),
+windCategory: windCategory(req.body.windSpeed),
+rackingM: rackingForceM(
+  req.body.MaxHeight,
+  req.body.Length,
+  req.body.noOfBays,
+  windPressure(req.body.windSpeed),
+  req.body.noOfColInMiddleBay
+),
+rackingE: rackingForceE(
+  req.body.MaxHeight,
+  req.body.Length,
+  req.body.noOfBays,
+  windPressure(req.body.windSpeed),
+  req.body.noOfColInMiddleBay
+),
+bayWidth: bayWidth(req.body.Length, req.body.noOfBays),
+RackForceHeight: rackingForceHeight(req.body.MaxHeight),
+upliftMiddleMiddle: upliftArea(
+  req.body.noOfColInMiddleBay,
+  bayWidth(req.body.Length, req.body.noOfBays),
+  req.body.Width,
+  windPressure(req.body.windSpeed),
+  req.body.Type
+)[1],
+upliftMiddleEnd: upliftArea(
+  req.body.noOfColInMiddleBay,
+  bayWidth(req.body.Length, req.body.noOfBays),
+  req.body.Width,
+  windPressure(req.body.windSpeed),
+  req.body.Type
+)[0],
+selected: options(req.body.snowZone),

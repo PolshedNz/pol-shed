@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../public/css/styles.css" />
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Pole Shed Design</title>
+
+</head>
+
+<body>
+  {{#each users}}
+  <div style="display: {{this.PoleDesignInternal.cerdisplay}};">
+
+    <div style="font-size: small">
+      <img src="data: image/png;base64,{{logo}}" width="160px" height="60px"
+        style="position: relative; float: right; margin-right:15px;" />
+      <p><strong>Job Number:{{this.jobNumber}} </strong></p>
+      <p>Issue: </p>
+      <h3 style="text-align: center;">PRODUCER STATEMENT-PS1-DESIGN</h3>
+      <p>ISSUED BY: <strong>{{this.engineerCompany}}(Design Engineer : {{this.engineer}})</strong></p>
+      <p>TO BE SUPPLIED TO: <strong> {{this.PoleDesignExternal.council}} District Council </strong> IN RESPECT OF:
+        <strong>Proposed NEW Farm Shed</strong>
+      </p>
+      <p>AT: <strong>{{this.address}}</strong></p>
+      <p> <strong> LEGAL DESCRIPTION </strong></p>
+      <p>We have been engaged by <strong>{{this.engineerCompany}}</strong> to provide <strong> Specific Structural
+          Engineering
+          Design</strong> services in respect of the requirements of Clause(s) <strong>B1</strong> of the Building Code
+        for part only (as specified in the attachment to this statement), of the proposed building work. </p>
+      <p><input type="checkbox"> ALL &nbsp; &nbsp; <input type="checkbox" checked> Part only as specified: Purlins,
+        Rafters, Girts, Poles, Columns, Pole embedment and all connections</p>
+      <p>The design has been prepared in accordance with compliance documents to NZ Building Code issued by Ministry of
+        Business, Innovation & Employment Clauses <strong>B1/VM1 and B1/VM4</strong> </p>
+      <p>The proposed building work covered by the producer statement is described on <strong>Ezequote</strong> drawings
+        title <strong> {{this.jobNumber}} </strong> and numbered <strong>{{this.PoleDesignExternal.pages}} </strong>
+        dated <strong> {{this.PoleDesignExternal.dated}} </strong> together with the following specification, and other
+        documents set out in the schedule attached to this statement: <strong>Design Featured Report Dated {{this.date}}
+          and numbered "Second Page"</strong> </p>
+      <p><strong>On behalf of {{this.engineerCompany}},</strong> and subject to:</p>
+      <ol>
+        <li>Site verification of the following design assumptions: <strong> {{this.PoleDesignExternal.Geotech}}
+          </strong></li>
+        <li><strong>The building has a design life of 50 years and an Importance Level {{this.PoleDesignInternal.IL}}
+          </strong></li>
+        <li><strong>Unless specifically noted, compliance of the drawings to Non-Specific codes such as NZS3604 and
+            NZS4229 have not been checked by this practice</strong></li>
+        <li><strong>This Certificate does not cover any other building code clause including weather tightness</strong>
+        </li>
+        <li><strong>Inspections of the building to be completed by {{this.PoleDesignExternal.council}} District Council.
+            As {{this.engineerCompany}} are not undertaking inspections, we cannot issue a producer Statement-PS4-
+            Construction Review.</strong></li>
+        <li><strong>This Producer Statement- Design is valid for a building consent issued within 1 year from the date
+            of issue</strong></li>
+        <li>All proprietary products meeting their performance specification requirements</li>
+      </ol>
+      <p><strong>I believe on reasonable grounds</strong> that a) the building, if constructed in accordance with the
+        drawings, specifications, and other documents provided or listed in the attached schedule, will comply with the
+        relevant provisions of the Building Code and that b), the persons who have undertaken the design have the
+        necessary competency to do so. I also recommend the follow level of construction monitoring/observation:</p>
+      <p><input type="checkbox" checked> CM1 <input type="checkbox"> CM2 <input type="checkbox"> CM3 <input
+          type="checkbox"> CM4 <input type="checkbox"> CM5 or as per agreement with owner/developer <strong> (stated
+          above)</strong></p>
+      <p>I, <strong>{{this.engineer}}</strong> am CPEng <strong>{{this.registrationNumber}}</strong> I am Member of
+        Engineering New Zealand and
+        hold the following qualification: <strong>{{this.engineerDescription}}</strong> and holds a current policy of
+        Professional Indemnity
+        Insurance no less than $200,000</p>
+      <p>Signed by <strong>{{this.engineer}}</strong> on behalf of <strong>{{this.engineerCompany}}</strong> Dated:
+        <strong>{{this.date}}</strong>
+      </p>
+      <p>Emai: {{this.engineerEmail}}</p>
+      <p style="font-size: x-small;">Note: This statement shall only be relied upon by the Building Consent Authority
+        named above. Liability under this statement accrues to the Design Firm only. The total maximum amount of damages
+        payable arising from this statement and all other statements provided to the Building Consent Authority in
+        relation to this building work, whether in contract, tort or otherwise(including negligence), is limited to the
+        sum of $200,000.</p>
+      <p style="font-size: small;">This form is to accompany Form 2 of the Building(Forms) Regulations 2004 for the
+        application of a Building Consent</p>
+      <div style="page-break-after: always;"></div>
+    </div>
+    <img src="data: image/png;base64,{{logo}}" width="160px" height="60px"
+      style="position: relative; float: right; margin-right:15px;" />
+    <div style="font-size: small;">
+      <p> <strong> Date:</strong> &#160 {{this.date}} </p>
+      <p>18B Jules Crescent,</p>
+      <p>Bell Block New Plymouth 4312</p>
+      <p>New Zealand &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        File No: </p>
+
+      <p> <strong style="text-transform: uppercase;"> DESIGN FEATURES SUMMARY FOR PROPOSED NEW FARM SHED
+          {{this.address}} </strong> </p>
+
+      <h4 style="margin-bottom: 0%"><u> Site Specific Loads</u></h4>
+      <table style="width:100%; ">
+        <tr style="height:0%">
+          <th style="width: 20.3%"></th>
+          <th style="width: 13%"></th>
+          <th style="width: 20.3%"></th>
+          <th style="width: 13%"></th>
+          <th style="width: 20.3%"></th>
+          <th style="width: 13%"></th>
+        </tr>
+        <tr>
+          <td> Roof Live Load </td>
+          <td>0.25 KPa &nbsp </td>
+          <td>Roof Dead Load </td>
+          <td>{{this.PoleDesignInternal.DL}} KPa &nbsp</td>
+          <td>Roof Live Point Load </td>
+          <td> {{this.PoleDesignInternal.Pl}} Kn</td>
+        </tr>
+        <tr>
+          <td> Snow Zone </td>
+          <td> {{this.snowZone}} </td>
+          <td> Ground Snow Load </td>
+          <td> {{this.GSnowLoad}} KPa </td>
+          <td> Roof Snow Load </td>
+          <td> {{this.RSnowLoad}} KPa</td>
+        </tr>
+        <tr>
+          <td> Earthquake Zone </td>
+          <td> {{this.Eq}} &nbsp </td>
+          <td>Subsoil Category </td>
+          <td> D &nbsp</td>
+          <td>Exposure Zone </td>
+          <td> {{this.Db}} </td>
+        </tr>
+        <tr>
+          <td> Importance Level </td>
+          <td> {{this.PoleDesignInternal.IL}} &nbsp </td>
+          <td>Ultimate wind & EQ ARI</td>
+          <td> {{this.ari}} Years &nbsp</td>
+          <td> Max Height </td>
+          <td> {{this.MaxHeight}} m </td>
+        </tr>
+        <tr>
+          <td> Wind Region </td>
+          <td> {{this.wRegion}} &nbsp </td>
+          <td>Terrain Category </td>
+          <td> {{this.tc}} &nbsp</td>
+          <td> Design Wind Speed </td>
+          <td> {{this.windSpeed}} m/s </td>
+        </tr>
+        <tr>
+          <td> Wind Pressure </td>
+          <td> {{this.windPressure1}} KPa &nbsp </td>
+          <td>Lee Zone </td>
+          <td> {{this.leeZone}} &nbsp</td>
+          <td> Ultimate Snow ARI </td>
+          <td> {{this.PoleDesignInternal.SNp}} Years &nbsp </td>
+        </tr>
+
+      </table>
+      <h4>Timber</h4>
+      <p>Sawn Timber to be graded to the properties of SG6 and SG8 or better as mentioned on plans, with moisture
+        content of 18% or less for dry and 25% or less for wet.</p>
+      <p>The following standards have been used in the design of this structure</p>
+      <ul>
+        <li>NZS 3603:1993 Timber Structures Standard</li>
+        <li>NZS 3604:2011 Timber Framed Buildings. Standards New Zealand, 2011</li>
+        <li>NZS 3404:1997 Steel Structures</li>
+        <li>AS/NZS 1170 2003 Structural Design Actions</li>
+        <li>AS/NZS 1170.2 2021 Structural Design Actions-Wind Action</li>
+        <li>Branz. "Engineering Basis of NZS 3604". April 2013</li>
+      </ul>
+      <p>Yours Faithfully</p>
+      <p><strong>{{this.engineerCompany}}</strong> </p>
+      <P>&nbsp;</P>
+      <P>&nbsp;</P>
+      <P>&nbsp;</P>
+      <p>&nbsp;</p>
+      <P><strong>{{this.engineer}}</strong></P>
+      <P>Director | {{this.engineerDescription}} . CMengNZ CPEng</P>
+      <p>Email:{{this.engineerEmail}} Contact: {{this.phoneNumber}} </p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </div>
+
+  </div>
+  <div style="page-break-after: always;"></div>
+  <div style="display: {{this.PoleDesignExternal.displayb2}};">
+    <p>&nbsp;</p>
+
+    <img src="data: image/png;base64,{{logo}}" width="160px" height="60px"
+      style="position: relative; float: right; margin-right:15px;" />
+    <p>Date: <strong>{{this.date}} </strong> </p>
+    <p>Council: <strong>{{this.PoleDesignExternal.council}} Council </strong></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>Subject: B2 compliance in respect of Proposed shed at {{this.address}} </h3>
+    <p>{{this.PoleDesignExternal.council}} Council typically requests a Producer Statement/Other means of compliance for
+      Design for Clause B2 of the Building Code-Durability</p>
+    <p>We are not able to provide a Producer Statement for durability because compliance needs to be shown on
+      material-by-material basis using a variety of compliance methods, and not all materials used have a clear
+      compliance path.</p>
+    <p>We can confirm that for the structural elements shown in our documentation under Clause B1:</p>
+    <h4>Timber</h4>
+    <p>Timber treatment has been selected to meet or exceed the requirements of table 1A of B2/AS1 and NZS3602</p>
+    <h4>Steel fixing</h4>
+    <p>Steel fixings are protected against weather as per table 4.1 and 4.2 of NZS3604-2011. Exposure Zone {{this.Db}}
+    </p>
+    <p>&nbsp;</p>
+
+    <p>&nbsp;</p>
+
+    <p>&nbsp;</p>
+
+    <p>Yours Faithfully</p>
+    <p><strong>{{this.engineerCompany}}</strong> </p>
+    <P>&nbsp;</P>
+    <P>&nbsp;</P>
+    <P><strong>{{this.engineer}}</strong></P>
+    <P>Director |{{this.engineerDescription}} . CMengNZ CPEng</P>
+    <p>Email: {{this.engineerEmail}}</p>
+    <p>Contact:{{this.phoneNumber}} </p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+    <p> Note: This letter shall only be relied on by the Building Consent Authority named in Engineering New Zealand/ACE
+      New Zealand Producer Statement PS1(B1) - Design in relation to the Building Work. Liability under this letter
+      accrues to the Design Review Firm only. The total maximum amount of damages payable arising from this letter and
+      all other statements provided to the Building Consent Authority in relation to this Building Work whether in
+      contract, tort or otherwise (including negligence), is limited to the sum of $200,000</p>
+  </div>
+  <div style="page-break-after: always;"></div>
+  <div style="display: {{this.PoleDesignInternal.IInfo}};">
+    <table style="width: 100%; margin-top: 3%; ">
+
+      <tr>
+        <td style="width: 30%;vertical-align: top;"><strong> Job No.: </strong> &#160 {{this.jobNumber}} </td>
+        <td style="width: 50%;vertical-align: top;"><strong> Address:</strong> &#160 {{this.address}} </td>
+        <td style="width: 20%;vertical-align: top;"><strong> Date:</strong> &#160 {{this.date}}</td>
+      </tr>
+      <tr>
+        <td style="width: 30%;vertical-align: top;"> <strong> Latitude: </strong> &#160 {{this.latitude}} </td>
+        <td style="width: 50%;vertical-align: top;"> <strong>Longitude:</strong> &#160 {{this.longitude}} </td>
+        <td style="width: 20%;vertical-align: top;"> <strong>Elevation:</strong> &#160 {{this.elevation}} m</td>
+      </tr>
+    </table>
+
+    <h4 style="margin-bottom: 0%">General Input</h4>
+    <table style="width:100%; ">
+      <tr style="height:0%">
+        <th style="width: 20.3%"></th>
+        <th style="width: 13%"></th>
+        <th style="width: 20.3%"></th>
+        <th style="width: 13%"></th>
+        <th style="width: 20.3%"></th>
+        <th style="width: 13%"></th>
+      </tr>
+      <tr>
+        <td> Roof Live Load </td>
+        <td>0.25 KPa &nbsp </td>
+        <td>Roof Dead Load </td>
+        <td>{{this.PoleDesignInternal.DL}} KPa &nbsp</td>
+        <td>Roof Live Point Load </td>
+        <td> {{this.PoleDesignInternal.Pl}} Kn</td>
+      </tr>
+      <tr>
+        <td> Snow Zone </td>
+        <td> {{this.snowZone}} </td>
+        <td> Ground Snow Load </td>
+        <td> {{this.GSnowLoad}} KPa </td>
+        <td> Roof Snow Load </td>
+        <td> {{this.RSnowLoad}} KPa</td>
+      </tr>
+      <tr>
+        <td> Earthquake Zone </td>
+        <td> {{this.Eq}} &nbsp </td>
+        <td>Subsoil Category </td>
+        <td> D &nbsp</td>
+        <td>Exposure Zone </td>
+        <td> {{this.Db}} </td>
+      </tr>
+      <tr>
+        <td> Importance Level </td>
+        <td> {{this.PoleDesignInternal.IL}} &nbsp </td>
+        <td>Ultimate wind & Earthquake ARI</td>
+        <td> {{this.ari}} Years &nbsp</td>
+        <td> Max Height </td>
+        <td> {{this.MaxHeight}} m </td>
+      </tr>
+      <tr>
+        <td> Wind Region </td>
+        <td> {{this.wRegion}} &nbsp </td>
+        <td>Terrain Category </td>
+        <td> {{this.tc}} &nbsp</td>
+        <td> Design Wind Speed </td>
+        <td> {{this.windSpeed}} m/s </td>
+      </tr>
+      <tr>
+        <td> Wind Pressure </td>
+        <td> {{this.windPressure1}} KPa &nbsp </td>
+        <td>Lee Zone </td>
+        <td> {{this.leeZone}} &nbsp</td>
+        <td> Ultimate Snow ARI </td>
+        <td> {{this.PoleDesignInternal.SNp}} Years &nbsp </td>
+      </tr>
+      <tr>
+        <td> Wind Category</td>
+        <td> {{this.windCategory}} </td>
+        <td> Earthquake ARI</td>
+        <td> {{this.PoleDesignInternal.EQp}} </td>
+      </tr>
+
+    </table>
+    <p>Note: Wind lateral loads are governing over Earthquake loads, So only wind loads are considered in calculations
+    </p>
+    <h4>Pressure Coefficients and Pressues</h4>
+    <p>Shed Type = {{this.PoleDesignInternal.roofType}} &nbsp; {{this.PoleDesignInternal.Type}} </p>
+    <p>For roof Cp,i = {{this.PoleDesignInternal.RCpi2}}</p>
+    <p>For roof &nbsp CP,e &nbsp from {{this.PoleDesignInternal.RFrom1}} m &nbsp To {{this.PoleDesignInternal.RTo1}} m
+      &nbsp Cpe = {{this.PoleDesignInternal.RCPe1}} &nbsp pe = {{this.PoleDesignInternal.Rpe1}} KPa &nbsp pnet =
+      {{this.PoleDesignInternal.Rpnet1}} KPa</p>
+    <p>For roof &nbsp CP,e &nbsp from {{this.PoleDesignInternal.RFrom2}} m &nbsp To {{this.PoleDesignInternal.RTo2}} m
+      &nbsp Cpe = {{this.PoleDesignInternal.RCpe2}} &nbsp pe = {{this.PoleDesignInternal.Rpe2}} KPa &nbsp pnet =
+      {{this.PoleDesignInternal.Rpnet2}} KPa</p>
+    <p>For wall Windward Cp,i = {{this.PoleDesignInternal.WCpi1}} &nbsp side Wall Cp,i =
+      {{this.PoleDesignInternal.WCpi2}} </p>
+    <p>For wall Windward and Leeward &nbsp CP,e &nbsp from {{this.PoleDesignInternal.WFrom1}} m &nbsp To
+      {{this.PoleDesignInternal.WTo1}} m &nbsp Cpe = {{this.PoleDesignInternal.WCPe1}} &nbsp pe =
+      {{this.PoleDesignInternal.Wpe1}} KPa &nbsp pnet = {{this.PoleDesignInternal.Wpnet1}} KPa</p>
+    <p>For side wall &nbsp CP,e &nbsp from {{this.PoleDesignInternal.WFrom2}} m &nbsp To
+      {{this.PoleDesignInternal.WTo2}} m &nbsp Cpe = {{this.PoleDesignInternal.WCPe2}} &nbsp pe =
+      {{this.PoleDesignInternal.Wpe2}} KPa &nbsp pnet = {{this.PoleDesignInternal.Wpnet2}} KPa</p>
+    <p>Maximum Upward pressure used in roof member Design = {{this.PoleDesignInternal.RMaxU}} KPa</p>
+    <p>Maximum Downward pressure used in roof member Design = {{this.PoleDesignInternal.RMaxD}} KPa</p>
+    <p>Maximum Wall pressure used in Design = {{this.PoleDesignInternal.WMax}} KPa</p>
+    <p>Maximum Racking pressure used in Design = {{this.PoleDesignInternal.RackMax}} KPa </p>
+    <h4> Design Summary</h4>
+  </div>
+  <div style="display:{{this.PoleDesignInternal.PurlinDisplay}} ;">
+    <h4> Purlin Design</h4>
+    <table style="width: 100%">
+
+      <tr>
+        <td>Purlin Spacing = {{this.pSpacing}} mm </td>
+        <td>Purlin Span = {{this.PSpan}} mm </td>
+        <td>Try Purlin {{this.member}} </td>
+      </tr>
+    </table>
+
+    <p>Moisture Condition = {{this.Mcondition}} </p>
+    <p>K1 Short term = {{this.K1short}} &nbsp &nbsp K1 Medium term = {{this.K1medium}} &nbsp &nbsp K1 Long term =
+      {{this.K1long}} &nbsp &nbsp K4 ={{this.k4}} &nbsp &nbsp K5 ={{this.k5}} &nbsp &nbsp K8 Downward ={{this.k8top}}
+    </p>
+    <p>K8 Upward ={{this.k8down}} &nbsp &nbsp S1 Downward ={{this.s1down}} &nbsp &nbsp S1 Upward ={{this.s1up}} </p>
+    <p>Shear Capacity of timber ={{this.shearStress}} MPa &nbsp &nbsp Bending Capacity of timber ={{this.BendingStress}}
+      MPa NZS3603 Amt 4, table 2.3</p>
+    <h5>Capacity Checks </h5>
+    <table style="width: 100%">
+      <tr>
+        <td style="display: inline; ">M<div style="font-size: 10px; display:inline">1.35D</div>
+        </td>
+        <td> &nbsp {{this.MomentLong}} Kn-m </>
+        <td> Capacity </td>
+        <td> &nbsp {{this.MomentDownlong}} Kn-m </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per1}} % </strong> </td>
+      </tr>
+      <tr>
+        <td style="display: inline;">M<div style="font-size: 10px; display:inline">1.2D+1.5L 1.2D+Sn 1.2D+WnDn</div
+            style="display:inline">
+        </td>
+        <td> &nbsp {{this.MomentMedium}} Kn-m </td>
+        <td> Capacity </td>
+        <td> &nbsp {{this.MomentDownmedium}} Kn-m </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per2}} % </strong></td>
+      </tr>
+      <tr>
+        <td>M<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> &nbsp {{this.MomentShort}} Kn-m</td>
+        <td>Capacity</td>
+        <td>-{{this.Momentupshort}} Kn-m</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per3}} % </strong></td>
+      </tr>
+      <tr>
+        <td style="display: inline; ">V<div style="font-size: 10px; display:inline">1.35D</div>
+        </td>
+        <td> &nbsp {{this.vlong}} Kn </>
+        <td> Capacity </td>
+        <td> &nbsp{{this.shearLong}} Kn </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per3v}} % </strong> </td>
+      </tr>
+      <tr>
+        <td style="display: inline;">V<div style="font-size: 10px; display:inline">1.2D+1.5L 1.2D+Sn 1.2D+WnDn</div
+            style="display:inline">
+        </td>
+        <td> &nbsp {{this.vmedium}} Kn </td>
+        <td> Capacity </td>
+        <td> &nbsp {{this.shearMedium}} Kn </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per2v}} % </strong></td>
+      </tr>
+      <tr>
+        <td>V<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> &nbsp {{this.vshort}} Kn</td>
+        <td>Capacity</td>
+        <td>-{{this.shearShort}} Kn</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per1v}} % </strong></td>
+      </tr>
+    </table>
+    <h5>Deflections</h5>
+    <p> Modulus of Elasticity = {{this.E}} MPa NZS3603 Amt 4, Table 2.3 considering at least 4 members acting together
+    </p>
+    <p> k2 for Long Term Loads = {{this.k2long}} </p>
+    <table style="width: 100%;">
+      <tr>
+        <td>Deflection under Dead and Live Load = {{this.deflong}} mm </td>
+        <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefDead}} = {{this.Deflimit}} mm </td>
+      </tr>
+      <tr>
+        <td>Deflection under Dead and Service Wind = {{this.defshort}} mm </td>
+        <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefWind}} = {{this.Deflimitwn}} mm</td>
+      </tr>
+    </table>
+    <h5>Reactions</h5>
+    <p>Maximum downward ={{this.reactiondown}} kn &nbsp Maximum upward = {{this.reactionup}} kn </p>
+    <p>Number of Blocking = {{this.Blocking}} &nbsp if 0 then no blocking required, if 1 then one midspan blocking
+      required</p>
+  </div>
+  <div style="display: {{this.PoleDesignInternal.RInternalDisplay}};">
+    <h4> Rafter Design Internal</h4>
+    <table style="width: 100%">
+
+      <tr>
+        <td>Internal Rafter Load Width = {{this.PoleDesignInternal.PLWManual}} mm </td>
+        <td>Internal Rafter Span = {{this.RSpanI}} mm </td>
+        <td>Try Rafter 2x{{this.RSize}} </td>
+      </tr>
+    </table>
+
+    <p>Moisture Condition = {{this.MconditionRI}} </p>
+    <p>K1 Short term = {{this.K1shortRI}} &nbsp &nbsp K1 Medium term = {{this.K1mediumRI}} &nbsp &nbsp K1 Long term =
+      {{this.K1longRI}} &nbsp &nbsp K4 ={{this.k4RI}} &nbsp &nbsp K5 ={{this.k5RI}} &nbsp &nbsp K8 Downward
+      ={{this.k8topRI}}</p>
+    <p>K8 Upward ={{this.k8downRI}} &nbsp &nbsp S1 Downward ={{this.s1downRI}} &nbsp &nbsp S1 Upward ={{this.s1upRI}}
+    </p>
+    <p>Shear Capacity of timber ={{this.shearStressRI}} MPa &nbsp &nbsp Bending Capacity of timber
+      ={{this.BendingStressRI}} MPa NZS3603 Amt 4, table 2.3</p>
+    <h5>Capacity Checks </h5>
+    <table style="width: 100%">
+      <tr>
+        <td style="display: inline; ">M<div style="font-size: 10px; display:inline">1.35D</div>
+        </td>
+        <td> &nbsp {{this.MomentLongRI}} Kn-m </>
+        <td> Capacity </td>
+        <td> &nbsp {{this.MomentDownlongRI}} Kn-m </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per1RI}} % </strong> </td>
+      </tr>
+      <tr>
+        <td style="display: inline;">M<div style="font-size: 10px; display:inline">1.2D+1.5L 1.2D+Sn 1.2D+WnDn</div
+            style="display:inline">
+        </td>
+        <td> &nbsp {{this.MomentMediumRI}} Kn-m </td>
+        <td> Capacity </td>
+        <td> &nbsp {{this.MomentDownmediumRI}} Kn-m </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per2RI}} % </strong></td>
+      </tr>
+      <tr>
+        <td>M<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> &nbsp {{this.MomentShortRI}} Kn-m</td>
+        <td>Capacity</td>
+        <td>-{{this.MomentupshortRI}} Kn-m</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per3RI}} % </strong></td>
+      </tr>
+      <tr>
+        <td style="display: inline; ">V<div style="font-size: 10px; display:inline">1.35D</div>
+        </td>
+        <td> {{this.vlongRI}} Kn </>
+        <td> Capacity </td>
+        <td> &nbsp{{this.shearLongRI}} Kn </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per3vRI}} % </strong> </td>
+      </tr>
+      <tr>
+        <td style="display: inline;">V<div style="font-size: 10px; display:inline">1.2D+1.5L 1.2D+Sn 1.2D+WnDn</div
+            style="display:inline">
+        </td>
+        <td> &nbsp {{this.vmediumRI}} Kn </td>
+        <td> Capacity </td>
+        <td> &nbsp {{this.shearMediumRI}} Kn </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per2vRI}} % </strong></td>
+      </tr>
+      <tr>
+        <td>V<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> &nbsp {{this.vshortRI}} Kn</td>
+        <td>Capacity</td>
+        <td>-{{this.shearShortRI}} Kn</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per1vRI}} % </strong></td>
+      </tr>
+    </table>
+
+
+    <h5>Deflections</h5>
+    <p> Modulus of Elasticity = {{this.ERI}} MPa NZS3603 Amt 4, Table 2.3 </p>
+    <p> k2 for Long Term Loads = {{this.k2longRI}} </p>
+    <table style="width: 100%;">
+      <tr>
+        <td>Deflection under Dead and Live Load = {{this.deflongRI}} mm </td>
+        <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefDead}} = {{this.DeflimitRI}} mm </td>
+      </tr>
+      <tr>
+        <td>Deflection under Dead and Service Wind = {{this.defshortRI}} mm </td>
+        <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefWind}} = {{this.DeflimitwnRI}} mm</td>
+      </tr>
+    </table>
+    <h5>Reactions</h5>
+    <p>Maximum downward ={{this.reactiondownRI}} kn &nbsp Maximum upward = {{this.reactionupRI}} kn </p>
+
+    <h5> Rafter to Pole Connection check</h5>
+    <p> Bolt Size = M{{this.RafterCapacity.da}} Number of Bolts = {{this.RafterCapacity.Noda}}</p>
+    <p> Calculations as per NZS 3603:1993 Amend 2005 clause 4.4 </p>
+    <p> Joint Group for Rafters ={{this.RafterCapacity.JD}} Joint Group for Pole = J5 </p>
+    <p> Minimum Bolt edge, end and spacing for Load perpendicular to grains = {{this.RafterCapacity.aperMin}} mm </p>
+    <p> Factor of Safety = 0.7 </p>
+    <p> For Perpendicular to grain loading</p>
+    <p> K11 = {{this.RafterCapacity.k11Per}} fpj = {{this.RafterCapacity.fpjPer}} Mpa for Rafter with effective
+      thickness = {{this.RafterCapacity.be}} mm </p>
+    <p> For Parallel to grain loading</p>
+    <p> K11 = 2.0 fcj = 36.1 Mpa for Pole with effective thickness = 100 mm </p>
+    <p> Capacity under short term loads = {{this.RafterCapacity.Qnshort}} Kn > {{this.reactionupRI}} Kn </p>
+    <div style="display: {{this.PoleDesignInternal.MipCalc}};">
+      <p> Prop on Sides = {{this.RafterCapacity.PropQ}} &nbsp {{this.RafterCapacity.PropInternal}} &nbsp
+        {{this.RafterCapacity.PropL}} &nbsp Reaction Prop = {{this.PAnalysis.reactionProp}} Kn down
+        {{this.PAnalysis.reactionPropUp}} Kn Up </p>
+      <p> Prop Combined axial and bending ratios (My/Phi x Mny)+(Nc/Phi x Ncy) should be less than or equal to 1 </p>
+      <p> For Short Term Load = {{this.RafterCapacity.PropRatioShort}} < 1 OK</p>
+          <p> For Medium Term Load = {{this.RafterCapacity.PropRatioMedium}} < 1 OK </p>
+              <p> For Long Term Load = {{this.RafterCapacity.PropRatioLong}} < 1 OK </p>
+                  <h5> Prop Connection check</h5>
+                  <p> Effective width of Pole used in Calculations = {{this.RafterCapacity.Poledia}} mm -20mm (Margin
+                    for chamfer) </p>
+                  <p> Bolt Size = M{{this.RafterCapacity.daProp}} Number of Bolts = {{this.RafterCapacity.NodaProp}}</p>
+                  <p> Minimum Bolt edge, end and spacing for Load perpendicular to grains =
+                    {{this.RafterCapacity.aperProp}} mm </p>
+                  <p> Angle of prop = 45 degree</p>
+                  <p> Prop Connection Capacity under Short term loads: &nbsp {{this.RafterCapacity.QnPropShort}} Kn
+                    &nbsp > &nbsp {{this.PAnalysis.MReactionPropShort}} Kn OK </p>
+                  <p> Prop Connection Capacity under Medium term loads: &nbsp {{this.RafterCapacity.QnPropMedium}} Kn
+                    &nbsp > &nbsp {{this.PAnalysis.MReactionPropMedium}} Kn OK </p>
+                  <p> Prop Connection Capacity under Long term loads: &nbsp {{this.RafterCapacity.QnPropLong}} Kn &nbsp
+                    > &nbsp {{this.PAnalysis.MReactionPropLong}} Kn OK </p>
+
+    </div>
+  </div>
+  <div style="display: {{this.PoleDesignInternal.RExternalDisplay}};">
+
+    <h4> Rafter Design External</h4>
+    <table style="width: 100%">
+
+      <tr>
+        <td>External Rafter Load Width = {{this.RSpacingE}} mm </td>
+        <td>External Rafter Span = {{this.RSpanE}} mm </td>
+        <td>Try Rafter {{this.RESize}} </td>
+      </tr>
+    </table>
+
+    <p>Moisture Condition = {{this.MconditionRE}} </p>
+    <p>K1 Short term = {{this.K1shortRE}} &nbsp &nbsp K1 Medium term = {{this.K1mediumRE}} &nbsp &nbsp K1 Long term =
+      {{this.K1longRE}} &nbsp &nbsp K4 ={{this.k4RE}} &nbsp &nbsp K5 ={{this.k5RE}} &nbsp &nbsp K8 Downward
+      ={{this.k8topRE}}</p>
+    <p>K8 Upward ={{this.k8downRE}} &nbsp &nbsp S1 Downward ={{this.s1downRE}} &nbsp &nbsp S1 Upward ={{this.s1upRE}}
+    </p>
+    <p>Shear Capacity of timber ={{this.shearStressRE}} MPa &nbsp &nbsp Bending Capacity of timber
+      ={{this.BendingStressRE}} MPa NZS3603 Amt 4, table 2.3</p>
+    <h5>Capacity Checks </h5>
+    <table style="width: 100%">
+      <tr>
+        <td style="display: inline; ">M<div style="font-size: 10px; display:inline">1.35D</div>
+        </td>
+        <td> &nbsp {{this.MomentLongRE}} Kn-m </>
+        <td> Capacity </td>
+        <td> &nbsp {{this.MomentDownlongRE}} Kn-m </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per1RE}} % </strong> </td>
+      </tr>
+      <tr>
+        <td style="display: inline;">M<div style="font-size: 10px; display:inline">1.2D+1.5L 1.2D+Sn 1.2D+WnDn</div
+            style="display:inline">
+        </td>
+        <td> &nbsp {{this.MomentMediumRE}} Kn-m </td>
+        <td> Capacity </td>
+        <td> &nbsp {{this.MomentDownmediumRE}} Kn-m </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per2RE}} % </strong></td>
+      </tr>
+      <tr>
+        <td>M<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> &nbsp {{this.MomentShortRE}} Kn-m</td>
+        <td>Capacity</td>
+        <td>-{{this.MomentupshortRE}} Kn-m</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per3RE}} % </strong></td>
+      </tr>
+      <tr>
+        <td style="display: inline; ">V<div style="font-size: 10px; display:inline">1.35D</div>
+        </td>
+        <td> &nbsp {{this.vlongRE}} Kn </>
+        <td> Capacity </td>
+        <td> &nbsp{{this.shearLongRE}} Kn </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per3vRE}} % </strong> </td>
+      </tr>
+      <tr>
+        <td style="display: inline;">V<div style="font-size: 10px; display:inline">1.2D+1.5L 1.2D+Sn 1.2D+WnDn</div
+            style="display:inline">
+        </td>
+        <td> &nbsp {{this.vmediumRE}} Kn</td>
+        <td> Capacity </td>
+        <td> &nbsp {{this.shearMediumRE}} Kn </td>
+        <td> Passing Percentage </td>
+        <td> <strong> {{Per2vRE}} % </strong></td>
+      </tr>
+      <tr>
+        <td>V<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> &nbsp {{this.vshortRE}} Kn</td>
+        <td>Capacity</td>
+        <td>-{{this.shearShortRE}} Kn</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per1vRE}} % </strong></td>
+      </tr>
+    </table>
+    <h5>Deflections</h5>
+    <p> Modulus of Elasticity = {{this.ERE}} MPa NZS3603 Amt 4, Table 2.3 </p>
+    <p> k2 for Long Term Loads = {{this.k2longRE}} </p>
+    <table style="width: 100%;">
+      <tr>
+        <td>Deflection under Dead and Live Load = {{this.deflongRE}} mm </td>
+        <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefDead}}= {{this.DeflimitRE}} mm </td>
+      </tr>
+      <tr>
+        <td>Deflection under Dead and Service Wind = {{this.defshortRE}} mm </td>
+        <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefWind}} = {{this.DeflimitwnRE}} mm</td>
+      </tr>
+    </table>
+    <h5>Reactions</h5>
+    <p>Maximum downward ={{this.reactiondownRE}} kn &nbsp Maximum upward = {{this.reactionupRE}} kn </p>
+    <h5> Rafter to Pole Connection check</h5>
+    <p> Bolt Size = M{{this.RafterCapacityE.da}} Number of Bolts = {{this.RafterCapacityE.Noda}}</p>
+    <p>Calculations as per NZS 3603:1993 Amend 2005 clause 4.4 </p>
+    <p> Joint Group for Rafters ={{this.RafterCapacityE.JD}} Joint Group for Pole = J5 </p>
+    <p> Factor of Safety = 0.7 </p>
+    <p>For Perpendicular to grain loading</p>
+    <p> K11 = {{this.RafterCapacityE.k11Per}} fpj = {{this.RafterCapacityE.fpjPer}} Mpa for Rafter with effective
+      thickness = {{this.RafterCapacityE.b}} mm </p>
+    <p>For Parallel to grain loading</p>
+    <p> K11 = 2.0 fcj = 36.1 Mpa for Pole with effective thickness = 100 mm </p>
+    <p>Eccentric Load check</p>
+    <p> V = phi x k1 x k4 x k5 x fs x b x ds ........... (Eq 4.12) = -{{this.RafterCapacityE.v}} kn >
+      {{this.reactionupRE}} Kn </p>
+    <p> Single Shear Capacity under short term loads = -{{this.RafterCapacityE.Qnshort}} Kn > {{this.reactionupRE}} Kn
+    </p>
+  </div>
+  <div
+    style="display: {{this.PoleDesignInternal.IntermediateFBDisplay}}; display: {{this.IntermediateFrontBack.display }} ">
+    <div style="display: {{this.IntermediateFrontBack.display }} ">
+      <h4> Intermediate Design Front and Back</h4>
+      <table style="width: 100%">
+
+        <tr>
+          <td>Intermediate Spacing = {{this.InspacingFB}} mm </td>
+          <td>Intermediate Span = {{this.ISpanFB}} mm </td>
+          <td>Try Intermediate 2x{{this.memberIFB}} </td>
+        </tr>
+      </table>
+
+
+      <p>Moisture Condition = {{this.MconditionFB}} </p>
+      <p>K1 Short term = {{this.K1shortFB}} &nbsp &nbsp K4 ={{this.k4FB}} &nbsp &nbsp K5 ={{this.k5FB}} &nbsp &nbsp K8
+        Downward ={{this.k8topFB}}</p>
+      <p>K8 Upward ={{this.k8downFB}} &nbsp &nbsp S1 Downward ={{this.s1downFB}} &nbsp &nbsp S1 Upward ={{this.s1upFB}}
+      </p>
+      <p>Shear Capacity of timber ={{this.shearStressFB}} MPa &nbsp &nbsp Bending Capacity of timber
+        ={{this.BendingStressFB}} MPa NZS3603 Amt 4, table 2.3</p>
+      <h5>Capacity Checks </h5>
+      <table style="width: 100%">
+        <tr>
+          <td>M<div style="font-size: 10px; display:inline">Wind+Snow</div>
+          </td>
+          <td> &nbsp {{this.MApplied}} Kn-m</td>
+          <td>Capacity</td>
+          <td>{{this.MnuShortIB}} Kn-m</td>
+          <td>Passing Percentage</td>
+          <td><strong> {{Per3FB}} % </strong></td>
+        </tr>
+        <tr>
+        <tr>
+          <td>V<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+          </td>
+          <td> &nbsp {{this.vshortFB}} Kn</td>
+          <td>Capacity</td>
+          <td>-{{this.shearShortFB}} Kn</td>
+          <td>Passing Percentage</td>
+          <td><strong> {{Per1vFB}} % </strong></td>
+        </tr>
+      </table>
+      <h5>Deflections</h5>
+      <p> Modulus of Elasticity = {{this.EFB}} MPa NZS3603 Amt 4, Table 2.3 </p>
+
+      <table style="width: 100%;">
+        <tr>
+          <td>Deflection under Snow and Service Wind = {{this.defshortFB}} mm </td>
+          <td> Limit byWoolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefWind}} = {{this.DeflimitwnFB}} mm</td>
+        </tr>
+      </table>
+      <h5>Reactions</h5>
+      <p>Maximum = {{this.reactionupFB}} kn </p>
+    </div>
+  </div>
+  <div style="display: {{this.displaySIDES}} ">
+    <div style="display: {{this.PoleDesignInternal.IntermediateSideDisplay}};">
+      <h4> Intermediate Design Sides</h4>
+      <table style="width: 100%">
+
+        <tr>
+          <td>Intermediate Spacing = {{this.InspacingSides}} mm </td>
+          <td>Intermediate Span = {{this.ISpanSides}} mm </td>
+          <td>Try Intermediate 2x{{this.memberISides}} </td>
+        </tr>
+      </table>
+
+      <p>Moisture Condition = {{this.MconditionSides}} </p>
+      <p>K1 Short term = {{this.K1shortSides}} &nbsp &nbsp K4 ={{this.k4Sides}} &nbsp &nbsp K5 ={{this.k5Sides}} &nbsp
+        &nbsp K8 Downward ={{this.k8topSides}}</p>
+      <p>K8 Upward ={{this.k8downSides}} &nbsp &nbsp S1 Downward ={{this.s1downSides}} &nbsp &nbsp S1 Upward
+        ={{this.s1upSides}} </p>
+      <p>Shear Capacity of timber ={{this.shearStressSides}} MPa &nbsp &nbsp Bending Capacity of timber
+        ={{this.BendingStressSides}} MPa NZS3603 Amt 4, table 2.3</p>
+      <h5>Capacity Checks </h5>
+      <table style="width: 100%">
+        <tr>
+          <td>M<div style="font-size: 10px; display:inline">Wind+Snow</div>
+          </td>
+          <td> &nbsp {{this.MAppliedSide}} Kn-m</td>
+          <td>Capacity</td>
+          <td>{{this.MnuShortSi}} Kn-m</td>
+          <td>Passing Percentage</td>
+          <td><strong> {{Per3Sides}} % </strong></td>
+        </tr>
+        <tr>
+        <tr>
+          <td>V<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+          </td>
+          <td> &nbsp {{this.vshortSides}} Kn</td>
+          <td>Capacity</td>
+          <td>{{this.shearShortSides}} Kn</td>
+          <td>Passing Percentage</td>
+          <td><strong> {{Per1vSides}} % </strong></td>
+        </tr>
+      </table>
+      <h5>Deflections</h5>
+      <p> Modulus of Elasticity = {{this.ESides}} MPa NZS3603 Amt 4, Table 2.3 </p>
+
+      <table style="width: 100%;">
+        <tr>
+          <td>Deflection under Snow and Service Wind = {{this.defshortSides}} mm </td>
+          <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefWind}} = {{this.DeflimitwnSides}} mm
+          </td>
+        </tr>
+      </table>
+      <h5>Reactions</h5>
+      <p>Maximum = {{this.reactionupSides}} kn </p>
+    </div>
+  </div>
+  <div> <!-- style="display: {{this.displayGFb}} " -->
+    <h4> Girt Design Front and Back</h4>
+    <table style="width: 100%">
+
+      <tr>
+        <td>Girt's Spacing = {{this.GSpacingFB}} mm </td>
+        <td>Girt's Span = {{this.GSpanFB}} mm </td>
+        <td>Try Girt {{this.memberGFB}} </td>
+      </tr>
+    </table>
+
+    <p>Moisture Condition = {{this.MconditionGFB}} </p>
+    <p>K1 Short term = {{this.K1shortGFB}} &nbsp &nbsp K4 ={{this.k4GFB}} &nbsp &nbsp K5 ={{this.k5GFB}} &nbsp &nbsp K8
+      Downward ={{this.k8topGFB}}</p>
+    <p>K8 Upward ={{this.k8downGFB}} &nbsp &nbsp S1 Downward ={{this.s1downGFB}} &nbsp &nbsp S1 Upward ={{this.s1upGFB}}
+    </p>
+    <p>Shear Capacity of timber ={{this.shearStressGFB}} MPa &nbsp &nbsp Bending Capacity of timber
+      ={{this.BendingStressGFB}} MPa NZS3603 Amt 4, table 2.3</p>
+    <h5>Capacity Checks </h5>
+    <table style="width: 100%">
+      <tr>
+        <td>M<div style="font-size: 10px; display:inline">Wind+Snow</div>
+        </td>
+        <td> {{this.MAppliedGFB}} Kn-m</td>
+        <td>Capacity</td>
+        <td>{{this.MnuShortGFB}} Kn-m</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per3GFB}} % </strong></td>
+      </tr>
+      <tr>
+        <td>V<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> {{this.vshorGFB}} Kn</td>
+        <td>Capacity</td>
+        <td>{{this.shearShortGFB}} Kn</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per1vGFB}} % </strong></td>
+      </tr>
+    </table>
+    <h5>Deflections</h5>
+    <p> Modulus of Elasticity = {{this.EGFB}} MPa NZS3603 Amt 4, Table 2.3 </p>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Deflection under Snow and Service Wind = {{this.defshortGFB}} mm </td>
+        <td> Limit by Woolcock et al, 1999 Span/{{this.PoleDesignInternal.VerDefWind}} = {{this.DeflimitwnGFB}} mm</td>
+      </tr>
+      <tr>
+        <td> Sag during installation = {{this.GirtsFrontBack.sag}} mm </td>
+      </tr>
+    </table>
+    <h5>Reactions</h5>
+    <p>Maximum = {{this.reactionupGFB}} kn </p>
+  </div>
+
+
+  <div> <!-- style="display: {{this.displaySides}} " -->
+    <h4> Girt Design Sides</h4>
+    <table style="width: 100%">
+
+      <tr>
+        <td>Girt's Spacing = {{this.GSpacingSides}} mm </td>
+        <td>Girt's Span = {{this.GSpanSides}} mm </td>
+        <td>Try Girt {{this.memberGSide}} </td>
+      </tr>
+    </table>
+
+    <p>Moisture Condition = {{this.MconditionGSide}} </p>
+    <p>K1 Short term = {{this.K1shortGSide}} &nbsp &nbsp K4 ={{this.k4GSide}} &nbsp &nbsp K5 ={{this.k5GSide}} &nbsp
+      &nbsp K8 Downward ={{this.k8topGSide}}</p>
+    <p>K8 Upward ={{this.k8downGSide}} &nbsp &nbsp S1 Downward ={{this.s1downGSide}} &nbsp &nbsp S1 Upward
+      ={{this.s1upGSide}} </p>
+    <p>Shear Capacity of timber ={{this.shearStressGSide}} MPa &nbsp &nbsp Bending Capacity of timber
+      ={{this.BendingStressGSide}} MPa NZS3603 Amt 4, table 2.3</p>
+    <h5>Capacity Checks </h5>
+    <table style="width: 100%">
+      <tr>
+        <td>M<div style="font-size: 10px; display:inline">Wind+Snow</div>
+        </td>
+        <td> &nbsp {{this.MAppliedGSide}} Kn-m</td>
+        <td>Capacity</td>
+        <td>{{this.MnuShortGSide}} Kn-m</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per3GSides}} % </strong></td>
+      </tr>
+      <tr>
+      <tr>
+        <td>V<div style="font-size: 10px; display:inline">0.9D-WnUp</div>
+        </td>
+        <td> &nbsp {{this.vshorGSide}} Kn</td>
+        <td>Capacity</td>
+        <td>{{this.shearShortGSide}} Kn</td>
+        <td>Passing Percentage</td>
+        <td><strong> {{Per1vGSides}} % </strong></td>
+      </tr>
+    </table>
+    <h5>Deflections</h5>
+    <p> Modulus of Elasticity = {{this.EGSide}} MPa NZS3603 Amt 4, Table 2.3 </p>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Deflection under Snow and Service Wind = {{this.defshortGSide}} mm </td>
+        <td> Limit by Woolcock et al. 1999 Span/100 = {{this.DeflimitwnGSide}} mm</td>
+      </tr>
+      <tr>
+        <td>Sag during installation ={{this.GirtsSide.sag}} mm </td>
+      </tr>
+    </table>
+    <h5>Reactions</h5>
+    <p>Maximum = {{this.reactionupGSide}} kn </p>
+  </div>
+
+  <div style="display: {{this.PoleDesignInternal.PoleInternalDisplay}} ;">
+    <h4> Middle Pole Design</h4>
+    <h5>Geometry</h5>
+    <table style="width: 100%">
+      <tr>
+        <td>{{this.PoleDesignInternal.member}}</td>
+        <td>Dry Use</td>
+        <td>Height</td>
+        <td>{{this.PoleDesignInternal.Height}} mm</td>
+      </tr>
+      <tr>
+        <td>Area</td>
+        <td> {{this.PoleDesignInternal.Area}} mm2</td>
+        <td>As</td>
+        <td>{{this.PoleDesignInternal.ShearArea}} mm2</td>
+      </tr>
+      <tr>
+        <td>Ix</td>
+        <td>{{this.PoleDesignInternal.Ipole}} mm4</td>
+        <td>Zx</td>
+        <td>{{this.PoleDesignInternal.Zpole}} mm3</td>
+      </tr>
+      <tr>
+        <td>Iy</td>
+        </td>
+        <td>{{this.PoleDesignInternal.Ipole}} mm4</td>
+        <td>Zx</td>
+        <td>{{this.PoleDesignInternal.Zpole}} mm3</td>
+      </tr>
+      <tr>
+        <td>Lateral Restraint</td>
+        <td>{{this.PoleDesignInternal.MPoleRes}} mm c/c</td>
+      </tr>
+    </table>
+    <h5>Loads</h5>
+    <p>Total Area over Pole = {{this.PoleDesignInternal.TotalArea}} m2 </p>
+    <table style="width: 100%">
+      <tr>
+        <td>Dead</td>
+        <td>{{this.PoleDesignInternal.DeadLoad}} Kn</td>
+        <td>Live</td>
+        <td>{{this.PoleDesignInternal.LiveLoad}} Kn</td>
+      <tr>
+        <td>Wind Down</td>
+        <td>{{this.PoleDesignInternal.windLoad}} Kn</td>
+        <td>Snow</td>
+        <td>{{this.PoleDesignInternal.snowLoad}} Kn</td>
+      </tr>
+      <tr>
+        <td>Moment wind</td>
+        <td>{{this.PoleDesignInternal.MWindLateralPole}} Kn-m</td>
+        <td style="display: {{this.PoleDesignInternal.display}};">Moment snow</td>
+        <td style="display: {{this.PoleDesignInternal.display}};">{{this.PoleDesignInternal.SnMoment}} Kn-m</td>
+      </tr>
+      <tr>
+        <td>Phi</td>
+        </td>
+        <td>0.8</td>
+        <td>K8</td>
+        <td>{{this.PoleDesignInternal.k8}}</td>
+      </tr>
+      <tr>
+        <td>K1 snow</td>
+        <td>0.8</td>
+        <td>K1 Dead</td>
+        <td>0.6</td>
+      </tr>
+      <tr>
+        <td>K1wind</td>
+        <td>1</td>
+      </tr>
+
+    </table>
+    <h5>Material</h5>
+    <table style="width: 100%;">
+      <tr>
+        <td>{{this.PoleDesignInternal.k20}}</td>
+        <td>Steaming</td>
+        <td>Normal</td>
+        <td>Dry Use</td>
+      </tr>
+      <tr>
+        <td>fb =</td>
+        <td>{{this.PoleDesignInternal.fb}} MPa</td>
+        <td>fs =</td>
+        <td>{{this.PoleDesignInternal.fs}} MPa</td>
+      </tr>
+      <tr>
+        <td>fc =</td>
+        <td>{{this.PoleDesignInternal.fc}} MPa</td>
+        <td>fp =</td>
+        <td>{{this.PoleDesignInternal.fp}} MPa</td>
+      </tr>
+      <tr>
+        <td>ft =</td>
+        <td>{{this.PoleDesignInternal.ft}} MPa</td>
+        <td>E =</td>
+        <td>{{this.PoleDesignInternal.E}} MPa</td>
+      </tr>
+    </table>
+    <h5>Capacities</h5>
+    <table style="width: 100%;">
+      <tr>
+        <td>PhiNcx Wind</td>
+        <td>{{this.PoleDesignInternal.PhiNcxW}} Kn</td>
+        <td>PhiMnx Wind</td>
+        <td> {{this.PoleDesignInternal.PhiMn}} Kn-m</td>
+        <td>PhiVnx Wind</td>
+        <td>{{this.PoleDesignInternal.PhiVn}} Kn</td>
+      </tr>
+      <tr>
+        <td>PhiNcx Dead</td>
+        <td>{{this.PoleDesignInternal.PhiNcxD}} Kn</td>
+        <td>PhiMnx Dead</td>
+        <td> {{this.PoleDesignInternal.PhiMnD}} Kn-m</td>
+        <td>PhiVnx Dead</td>
+        <td>{{this.PoleDesignInternal.PhiVnD}} Kn</td>
+      </tr>
+      <tr style="display: {{this.PoleDesignInternal.display}};">
+        <td>PhiNcx Snow</td>
+        <td>{{this.PoleDesignInternal.PhiNcxS}} Kn</td>
+        <td>PhiMnx Snow</td>
+        <td> {{this.PoleDesignInternal.PhiMnS}} Kn-m</td>
+        <td>PhiVnx Snow</td>
+        <td>{{this.PoleDesignInternal.PhiVnS}} Kn</td>
+      </tr>
+    </table>
+
+    <h5>Checks</h5>
+    <p> (Mx/PhiMnx)+(N/phiNcx) = {{this.PoleDesignInternal.Ccheck1}} < 1 OK</p>
+        <p> (Mx/PhiMnx)^2+(N/phiNcx) = {{this.PoleDesignInternal.Ccheck2}} < 1 OK</p>
+            <p>Deflection at top under service lateral loads = {{this.PoleDesignInternal.Def}} mm <
+                {{this.PoleDesignInternal.Deflimit}} mm </p>
+
+                <h3> Drained Lateral Strength of Middle pile in cohesionless soils Free Head short pile</h3>
+                <h5>Assumed Soil Properties</h5>
+                <table style="width: 80%">
+                  <tr>
+                    <td>Gamma</td>
+                    <td>{{this.PoleDesignInternal.Density}} Kn/m3</td>
+                    <td>Friction angle</td>
+                    <td>{{this.PoleDesignInternal.Friction}} deg</td>
+                    <td>Cohesion</td>
+                    <td>{{this.PoleDesignInternal.Cohesion}} Kn/m3</td>
+                  </tr>
+                  <tr>
+                    <td>K0 =</td>
+                    <td>(1-sin({{this.PoleDesignInternal.Friction}})) / (1+sin({{this.PoleDesignInternal.Friction}}))
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Kp =</td>
+                    <td> (1+sin({{this.PoleDesignInternal.Friction}})) / (1-sin({{this.PoleDesignInternal.Friction}}))
+                    </td>
+                  </tr>
+                </table>
+                <h5>Geometry For Middle Bay Pole</h5>
+                <table style="width: 100%">
+                  <tr>
+                    <td>Ds =</td>
+                    <td>{{this.PoleDesignInternal.conpiledia}} mm</td>
+                    <td>Pile Diameter</td>
+                  </tr>
+                  <tr>
+                    <td>L =</td>
+                    <td> {{this.PoleDesignInternal.poleDepth}} mm</td>
+                    <td>Pile embedment length</td>
+                  </tr>
+                  <tr>
+                    <td>f1 =</td>
+                    <td>{{this.PoleDesignInternal.RHeight}} mm</td>
+                    <td>Distance at which the shear force is applied</td>
+                  </tr>
+                  <tr>
+                    <td>f2 = </td>
+                    </td>
+                    <td>0 mm</td>
+                    <td>Distance of top soil at rest pressure</td>
+                  </tr>
+                </table>
+
+                <h5>Loads</h5>
+                <table style="width: 70%">
+                  <tr>
+                    <td>Moment Wind =</td>
+                    <td> {{this.PoleDesignInternal.MWindLateralPole}} Kn-m </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">Moment Snow = </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">{{this.PoleDesignInternal.SnMomentPole}}
+                      Kn-m </td>
+
+                  </tr>
+                  <tr>
+                    <td>Shear Wind = </td>
+                    <td>{{this.PoleDesignInternal.Shearwind}} Kn </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">Shear Snow = </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">{{this.PoleDesignInternal.Shearsnow}} Kn
+                    </td>
+                  </tr>
+                </table>
+                <h5>Pile Properties</h5>
+                <table style="width: 100%">
+                  <tr>
+                    <td>Safety Factory </td>
+                    <td>0.55</td>
+                  </tr>
+                  <tr>
+                    <td>Hu = </td>
+                    <td> {{this.PoleDesignInternal.Hu}} Kn </td>
+                    <td> Ultimate Lateral Strength of the Pile, Short pile</td>
+                  </tr>
+                  <tr>
+                    <td>Mu = </td>
+                    <td>{{this.PoleDesignInternal.Mu}} Kn-m </td>
+                    <td> Ultimate Moment Capacity of Pile</td>
+                  </tr>
+                </table>
+                <h5>Checks</h5>
+                <tr>
+                  <td>Applied Forces/Capacities = </td>
+                  <td>{{this.PoleDesignInternal.Fcheck}}</td>
+                  <td>
+                    < 1</td>
+                  <td>OK</td>
+                </tr>
+
+  </div>
+  <div style="display: {{this.PoleDesignInternal.PoleExternalDisplay}} ;">
+    <h4> End Pole Design</h4>
+    <h5>Geometry For End Bay Pole</h5>
+    <h5>Geometry</h5>
+    <table style="width: 100%">
+      <tr>
+        <td>{{this.PoleDesignExternal.member}}</td>
+        <td>Dry Use</td>
+        <td>Height</td>
+        <td>{{this.PoleDesignExternal.Height}} mm</td>
+      </tr>
+      <tr>
+        <td>Area</td>
+        <td> {{this.PoleDesignExternal.Area}} mm2</td>
+        <td>As</td>
+        <td>{{this.PoleDesignExternal.ShearArea}} mm2</td>
+      </tr>
+      <tr>
+        <td>Ix</td>
+        <td>{{this.PoleDesignExternal.Ipole}} mm4</td>
+        <td>Zx</td>
+        <td>{{this.PoleDesignExternal.Zpole}} mm3</td>
+      </tr>
+      <tr>
+        <td>Iy</td>
+        </td>
+        <td>{{this.PoleDesignExternal.Ipole}} mm4</td>
+        <td>Zx</td>
+        <td>{{this.PoleDesignExternal.Zpole}} mm3</td>
+      </tr>
+      <tr>
+        <td>Lateral Restraint</td>
+        <td>{{this.PoleDesignExternal.MPoleRes}} mm c/c</td>
+      </tr>
+    </table>
+    <h5>Loads</h5>
+    <p>Total Area over Pole = {{this.PoleDesignExternal.TotalArea}} m2 </p>
+    <table style="width: 100%">
+      <tr>
+        <td>Dead</td>
+        <td>{{this.PoleDesignExternal.DeadLoad}} Kn</td>
+        <td>Live</td>
+        <td>{{this.PoleDesignExternal.LiveLoad}} Kn</td>
+      <tr>
+        <td>Wind Down</td>
+        <td>{{this.PoleDesignExternal.windLoad}} Kn</td>
+        <td>Snow</td>
+        <td>{{this.PoleDesignExternal.snowLoad}} Kn</td>
+      </tr>
+      <tr>
+        <td>Moment Wind</td>
+        <td>{{this.PoleDesignExternal.MwindLateral}} Kn-m</td>
+        <td style="display: {{this.PoleDesignExternal.display}};">Moment snow</td>
+        <td style="display: {{this.PoleDesignExternal.display}};">{{this.PoleDesignExternal.SnMoment}} Kn-m</td>
+      </tr>
+      <tr>
+        <td>Phi</td>
+        </td>
+        <td>0.8</td>
+        <td>K8</td>
+        <td>{{this.PoleDesignExternal.k8}}</td>
+      </tr>
+      <tr>
+        <td>K1 snow</td>
+        <td>0.8</td>
+        <td>K1 Dead</td>
+        <td>0.6</td>
+      </tr>
+      <tr>
+        <td>K1wind</td>
+        <td>1</td>
+      </tr>
+
+    </table>
+    <h5>Material</h5>
+    <table style="width: 100%;">
+      <tr>
+        <td>{{this.PoleDesignExternal.k20}}</td>
+        <td>Steaming</td>
+        <td>Normal</td>
+        <td>Dry Use</td>
+      </tr>
+      <tr>
+        <td>fb =</td>
+        <td>{{this.PoleDesignExternal.fb}} MPa</td>
+        <td>fs =</td>
+        <td>{{this.PoleDesignExternal.fs}} MPa</td>
+      </tr>
+      <tr>
+        <td>fc =</td>
+        <td>{{this.PoleDesignExternal.fc}} MPa</td>
+        <td>fp =</td>
+        <td>{{this.PoleDesignExternal.fp}} MPa</td>
+      </tr>
+      <tr>
+        <td>ft =</td>
+        <td>{{this.PoleDesignExternal.ft}} MPa</td>
+        <td>E =</td>
+        <td>{{this.PoleDesignExternal.E}} MPa</td>
+      </tr>
+    </table>
+    <h5>Capacities</h5>
+    <table style="width: 100%;">
+      <tr>
+        <td>PhiNcx Wind</td>
+        <td>{{this.PoleDesignExternal.PhiNcxW}} Kn</td>
+        <td>PhiMnx Wind</td>
+        <td> {{this.PoleDesignExternal.PhiMn}} Kn-m</td>
+        <td>PhiVnx Wind</td>
+        <td>{{this.PoleDesignExternal.PhiVn}} Kn</td>
+      </tr>
+      <tr>
+        <td>PhiNcx Dead</td>
+        <td>{{this.PoleDesignExternal.PhiNcxD}} Kn</td>
+        <td>PhiMnx Dead</td>
+        <td> {{this.PoleDesignExternal.PhiMnD}} Kn-m</td>
+        <td>PhiVnx Dead</td>
+        <td>{{this.PoleDesignExternal.PhiVnD}} Kn</td>
+      </tr>
+      <tr style="display: {{this.PoleDesignExternal.display}};">
+        <td>PhiNcx Snow</td>
+        <td>{{this.PoleDesignExternal.PhiNcxS}} Kn</td>
+        <td>PhiMnx Snow</td>
+        <td> {{this.PoleDesignExternal.PhiMnS}} Kn-m</td>
+        <td>PhiVnx Snow</td>
+        <td>{{this.PoleDesignExternal.PhiVnS}} Kn</td>
+      </tr>
+    </table>
+
+    <h5>Checks</h5>
+    <p> (Mx/PhiMnx)+(N/phiNcx) = {{this.PoleDesignExternal.Ccheck1}} < 1 OK</p>
+        <p> (Mx/PhiMnx)^2+(N/phiNcx) = {{this.PoleDesignExternal.Ccheck2}} < 1 OK</p>
+            <p>Deflection at top under service lateral loads = {{this.PoleDesignExternal.Def}} mm <
+                {{this.PoleDesignExternal.Deflimit}} mm </p>
+
+                <table style="width: 100%">
+                  <tr>
+                    <td>Ds =</td>
+                    <td>{{this.PoleDesignExternal.conpiledia}} mm</td>
+                    <td>Pile Diameter</td>
+                  </tr>
+                  <tr>
+                    <td>L =</td>
+                    <td> {{this.PoleDesignExternal.poleDepth}} mm</td>
+                    <td>Pile embedment length</td>
+                  </tr>
+                  <tr>
+                    <td>f1 =</td>
+                    <td>{{this.PoleDesignExternal.RHeight}} mm</td>
+                    <td>Distance at which the shear force is applied</td>
+                  </tr>
+                  <tr>
+                    <td>f2 = </td>
+                    </td>
+                    <td>0 mm</td>
+                    <td>Distance of top soil at rest pressure</td>
+                  </tr>
+                </table>
+
+                <h5>Loads</h5>
+                <p>Total Area over Pole = {{this.PoleDesignExternal.TotalArea}} m2 </p>
+                <table style="width: 70%">
+                  <tr>
+                    <td>Moment Wind =</td>
+                    <td> {{this.PoleDesignExternal.MwindLateral}} Kn-m</td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">Moment Snow = </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">{{this.PoleDesignExternal.SnMoment}} Kn-m
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>Shear Wind = </td>
+                    <td>{{this.PoleDesignExternal.Shearwind}} Kn </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">Shear Snow = </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">{{this.PoleDesignExternal.Shearsnow}} Kn
+                    </td>
+                  </tr>
+                </table>
+
+                <h5>Pile Properties</h5>
+                <table style="width: 100%">
+                  <tr>
+                    <td>Safety Factory </td>
+                    <td>0.55</td>
+                  </tr>
+                  <tr>
+                    <td>Hu = </td>
+                    <td> {{this.PoleDesignExternal.Hu}} Kn </td>
+                    <td> Ultimate Lateral Strength of the Pile, Short pile</td>
+                  </tr>
+                  <tr>
+                    <td>Mu = </td>
+                    <td>{{this.PoleDesignExternal.Mu}} Kn-m </td>
+                    <td> Ultimate Moment Capacity of Pile</td>
+                  </tr>
+                </table>
+                <h5>Checks</h5>
+                <tr>
+                  <td>Applied Forces/Capacities = </td>
+                  <td>{{this.PoleDesignExternal.Fcheck}}</td>
+                  <td>
+                    < 1</td>
+                  <td>OK</td>
+                </tr>
+                <h3> Drained Lateral Strength of End pile in cohesionless soils Free Head short pile</h3>
+                <h5>Assumed Soil Properties</h5>
+                <table style="width: 80%">
+                  <tr>
+                    <td>Gamma</td>
+                    <td>{{this.PoleDesignInternal.Density}} Kn/m3</td>
+                    <td>Friction angle</td>
+                    <td>{{this.PoleDesignInternal.Friction}} deg</td>
+                    <td>Cohesion</td>
+                    <td>{{this.PoleDesignInternal.Cohesion}} Kn/m3</td>
+                  </tr>
+                  <tr>
+                    <td>K0 =</td>
+                    <td>(1-sin({{this.PoleDesignInternal.Friction}})) / (1+sin({{this.PoleDesignInternal.Friction}}))
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Kp =</td>
+                    <td> (1+sin({{this.PoleDesignInternal.Friction}})) / (1-sin({{this.PoleDesignInternal.Friction}}))
+                    </td>
+                  </tr>
+                </table>
+                <h5>Geometry For End Bay Pole</h5>
+                <table style="width: 100%">
+                  <tr>
+                    <td>Ds =</td>
+                    <td>{{this.PoleDesignInternal.conpiledia}} mm</td>
+                    <td>Pile Diameter</td>
+                  </tr>
+                  <tr>
+                    <td>L =</td>
+                    <td> {{this.PoleDesignExternal.poleDepth}} mm</td>
+                    <td>Pile embedment length</td>
+                  </tr>
+                  <tr>
+                    <td>f1 =</td>
+                    <td>{{this.PoleDesignExternal.RHeight}} mm</td>
+                    <td>Distance at which the shear force is applied</td>
+                  </tr>
+                  <tr>
+                    <td>f2 = </td>
+                    </td>
+                    <td>0 mm</td>
+                    <td>Distance of top soil at rest pressure</td>
+                  </tr>
+                </table>
+
+                <h5>Loads</h5>
+                <table style="width: 70%">
+                  <tr>
+                    <td>Moment Wind =</td>
+                    <td> {{this.PoleDesignExternal.MwindLateral}} Kn-m </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">Moment Snow = </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">{{this.PoleDesignExternal.SnMoment}} Kn-m
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>Shear Wind = </td>
+                    <td>{{this.PoleDesignExternal.Shearwind}} Kn </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">Shear Snow = </td>
+                    <td style="display: {{this.PoleDesignInternal.display}};">{{this.PoleDesignExternal.Shearsnow}} Kn
+                    </td>
+                  </tr>
+                </table>
+                <h5>Pile Properties</h5>
+                <table style="width: 100%">
+                  <tr>
+                    <td>Safety Factory </td>
+                    <td>0.55</td>
+                  </tr>
+                  <tr>
+                    <td>Hu = </td>
+                    <td> {{this.PoleDesignExternal.Hu}} Kn </td>
+                    <td> Ultimate Lateral Strength of the Pile, Short pile</td>
+                  </tr>
+                  <tr>
+                    <td>Mu = </td>
+                    <td>{{this.PoleDesignExternal.Mu}} Kn-m </td>
+                    <td> Ultimate Moment Capacity of Pile</td>
+                  </tr>
+                </table>
+                <h5>Checks</h5>
+                <tr>
+                  <td>Applied Forces/Capacities = </td>
+                  <td>{{this.PoleDesignExternal.Fcheck}}</td>
+                  <td>
+                    < 1</td>
+                  <td>OK</td>
+                </tr>
+
+  </div>
+  </div>
+  <h3> Uplift Check</h3>
+  <p>Density of Concrete = 24 Kn/m3</p>
+  <p>Density of Timber Pole = 5 Kn/m3</p>
+  <p>Due to cast in place pile, the surface interaction between soil and pile will be rough thus angle of friction
+    between both is taken equal to soil angle of internal friction</p>
+  <p>Ks (Lateral Earth Pressure Coefficient)for cast into place concrete piles = 1.5 </p>
+  <p>Formula to calculate Skin Friction = Safecty factor (0.55) x Density of Soil({{this.PoleDesignInternal.Density}}) x
+    Height of Pile({{this.PoleDesignInternal.poleDepth}}) x Ks(1.5) x 0.5 x tan({{this.PoleDesignInternal.Friction}}) x
+    Pi x Dia of Pile(0.6) x Height of Pile({{this.PoleDesignInternal.poleDepth}}) </p>
+  <p>Skin Friction = {{this.PoleDesignInternal.pileSkinFriction}} Kn</p>
+  <p>Weight of Pile + Pile Skin Friction = {{this.PoleDesignInternal.pileWeight}} Kn </p>
+  <p>Uplift on one Pile = {{this.PoleDesignInternal.UpLiftOnColumn}} Kn </p>
+  <p>Uplift is ok</p>
+  {{/each}}
+
+</body>
+
+</html>

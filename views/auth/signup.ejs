@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/auth.css" />
+</head>
+
+<body>
+
+    <div class="signup-wrapper">
+        <div class="signup-container">
+            <div class="signup-image">
+                <img src="/images/signup.jpg" alt="Signup Illustration" />
+            </div>
+            <div class="signup-form">
+                <h2>Create an Account</h2>
+
+                <% if (typeof error !=='undefined' ) { %>
+                    <div class="error-message">
+                        <%= error %>
+                    </div>
+                    <% } %>
+
+                        <form action="/signup" method="POST">
+                            <input type="text" name="name" placeholder="Full Name"
+                                value="<%= typeof name !== 'undefined' ? name : '' %>" required />
+                            <input type="email" name="email" placeholder="Email"
+                                value="<%= typeof email !== 'undefined' ? email : '' %>" required />
+                            <input type="password" name="password" placeholder="Password" required />
+                            <button type="submit">Sign Up</button>
+                            <p class="switch-link">Already have an account? <a href="/login">Login</a></p>
+                        </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="emailSuccessModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Verification email sent</h3>
+            <p>Please check your inbox to verify your account.</p>
+        </div>
+    </div>
+
+    <script>
+
+        setTimeout(() => {
+            const errorBox = document.querySelector(".error-message");
+            if (errorBox) errorBox.style.display = "none";
+        }, 3000);
+
+
+        function closeModal() {
+            document.getElementById("emailSuccessModal").style.display = "none";
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("showModal") === "true") {
+            document.getElementById("emailSuccessModal").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+/* Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.signup-wrapper {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 500px;
+}
+
+.signup-image {
+  flex: 1;
+  background-color: #fff;
+}
+
+.signup-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signup-form {
+  flex: 1;
+  background-color: #e3f2fd;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-form h2 {
+  margin-bottom: 20px;
+  color: #003366;
+  text-align: center;
+}
+
+.signup-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.signup-form button {
+  padding: 12px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #005fa3;
+}
+
+.switch-link {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error-message {
+  background-color: #ffd6d6;
+  color: #b30000;
+  padding: 10px 15px;
+  border: 1px solid #ffb3b3;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+  }
+
+  .signup-image {
+    height: 250px;
+  }
+
+  .signup-image img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .signup-form {
+    padding: 30px 20px;
+  }
+
+  .signup-form h2 {
+    font-size: 22px;
+  }
+
+  .signup-form input,
+  .signup-form button {
+    font-size: 15px;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 6px;
+  width: 40%;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}

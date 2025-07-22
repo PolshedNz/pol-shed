@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="./public/css/styles.css" />
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Pole Shed Design</title>
+  </head>
+
+  <body>
+    {{#each users}}
+      <table style="width: 100%; word-break: break-all;margin-top: 3%;">
+       
+        <tr>
+          <td><strong> Job Number: </strong> &#160 {{this.jobNumber}} </td> 
+          <td><strong> Address:</strong> &#160   {{this.address}} </td>
+          <td><strong> Date:</strong> &#160 {{this.date}}</td>
+        </tr>
+        </table>
+       
+        <h4 style="margin-bottom: 0%">Input</h4>
+        <table style="width:100%; border-spacing: 5%;">
+          <tr style="height:0%">
+            <th style="width: 20.3%"></th>
+            <th style="width: 13%"></th>
+            <th style="width: 20.3%"></th>
+            <th style="width: 13%"></th>
+            <th style="width: 20.3%"></th>
+            <th style="width: 13%"></th>
+          </tr>
+        <tr>
+          <td> Roof Live Load </td> <td>0.25 KPa &nbsp </td> <td>Roof Dead Load </td>  <td>0.25 KPa &nbsp</td>  <td>Roof Live Point Load </td><td> 1.1 Kn</td>
+        </tr>
+        <tr>
+          <td> Snow Zone </td><td> {{this.snowZone}} </td><td> Ground Snow Load </td><td> {{this.GSnowLoad}} KPa </td><td> Roof Snow Load </td><td> {{this.RSnowLoad}} KPa</td>
+        </tr>
+        <tr>
+          <td> Earthquake Zone </td> <td> 1 &nbsp </td> <td>Subsoil Category </td>  <td> C &nbsp</td>  <td>Exposure Zone </td><td> C </td>
+        </tr>
+        <tr>
+          <td> Importance Level </td> <td> 1 &nbsp </td> <td>Design Working Life </td>  <td> 50 Years &nbsp</td>  <td> Max Height </td><td> {{this.MaxHeight}} m </td>
+        </tr>
+        <tr>
+          <td> Wind Region </td> <td> NZ1 &nbsp </td> <td>Terrain Category </td>  <td> 2 &nbsp</td>  <td> Design Wind Speed </td><td> {{this.windSpeed}} m/s </td>
+        </tr>
+        <tr>
+          <td> Wind Pressure </td> <td> {{this.windPressure1}} &nbsp </td> <td>Lee Zone </td>  <td> No &nbsp</td>  <td> Site Elevation</td><td> 10.50 m </td>
+        </tr>    
+        <tr>
+          <td> Ultimate ARI </td> <td> 100 Years &nbsp </td> 
+        </tr>     
+      </table>
+      {{/each}}
+    
+  </body>
+</html>
+
+<!-- RoofPitch
+      windSpeed
+      RSnowLoad
+      GSnowLoad
+      windPressure1
+      windCategory
+      rackingM
+      rackingE
+      bayWidth
+      RackForceHeight
+      upliftMiddleMiddle
+      upliftMiddleEnd -->
